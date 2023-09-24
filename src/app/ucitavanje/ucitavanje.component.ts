@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ZakljucniList } from '../models/zakljucni-list/zakljucni-list.model';
+import { ZakljucniListService } from '../zakljucni-list.service';
 
 @Component({
   selector: 'app-ucitavanje',
@@ -8,8 +9,9 @@ import { ZakljucniList } from '../models/zakljucni-list/zakljucni-list.model';
 })
 export class UcitavanjeComponent implements OnInit {
   public zakList: ZakljucniList;
-  constructor() {
-    this.zakList = new ZakljucniList(1, '411212');
+
+  constructor(private zakListService: ZakljucniListService) {
+    this.zakList = this.zakListService.getZakList();
   }
 
   ngOnInit(): void {}
