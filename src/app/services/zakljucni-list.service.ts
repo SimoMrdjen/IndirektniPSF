@@ -1,4 +1,4 @@
-import { ZakljucniList } from './models/zakljucni-list/zakljucni-list.model';
+import { ZakljucniList } from '../models/zakljucni-list/zakljucni-list.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
