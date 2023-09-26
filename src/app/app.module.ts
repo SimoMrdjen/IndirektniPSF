@@ -23,6 +23,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 registerLocaleData(en);
 
@@ -35,6 +36,7 @@ registerLocaleData(en);
     NavigationComponent,
     UserTableComponent,
     EditUserComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

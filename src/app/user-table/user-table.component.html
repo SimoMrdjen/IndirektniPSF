@@ -20,6 +20,9 @@
         <button nz-button nzType="primary" (click)="editUser(user)">
           Edit
         </button>
+        <a [routerLink]="['/user', user.id]">
+          <button nz-button nzType="primary">Show user</button></a
+        >
       </td>
     </tr>
   </tbody>
