@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ZakljucniList } from '../models/zakljucni-list/zakljucni-list.model';
+import { ZakljucniList } from '../models/zakljucni-list.model';
 import { ZakljucniListService } from '../services/zakljucni-list.service';
 
 @Component({

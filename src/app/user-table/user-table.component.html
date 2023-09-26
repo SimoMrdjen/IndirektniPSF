@@ -1,0 +1,26 @@
+<br />
+<app-edit-user></app-edit-user>
+<hr />
+<nz-table #basicTable [nzData]="users">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Email</th>
+      <th>Rola</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzType="primary" (click)="editUser(user)">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
