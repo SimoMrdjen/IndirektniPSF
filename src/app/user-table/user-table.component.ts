@@ -13,13 +13,25 @@ export class UserTableComponent implements OnInit {
   constructor(
     private userService: UserService,
     private editUserService: EditUserService
-  ) {
-    this.users = userService.users;
+  ) {}
+  ngOnInit(): void {
+    this.getUsers();
   }
+
+  getUsers() {
+    this.editUserService.getUsers().subscribe({
+      next: (response) => {
+        this.users = response;
+      },
+      error: (err) => {
+        alert('Error occurred');
+      },
+    });
+  }
+
   editUser(user: User) {
     this.editUserService.setUser(user);
     console.log(user);
     this.editUserService.open();
   }
-  ngOnInit(): void {}
 }
