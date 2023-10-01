@@ -13,9 +13,13 @@ export class EditUserService implements OnInit {
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    console.log('constructor() is running in service');
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('ngOnIit() is running in service');
+  }
 
   getParams(): HttpParams {
     let params = new HttpParams();
@@ -36,6 +40,7 @@ export class EditUserService implements OnInit {
   ////////////////////////////////////
 
   editUser(user: User): Observable<User> {
+    console.log('editUser is running');
     const options = {
       headers: this.getHeaders(),
       params: this.getParams(),
@@ -55,6 +60,7 @@ export class EditUserService implements OnInit {
   }
 
   getUsers(): Observable<User[]> {
+    console.log('getUsers() is running');
     const token =
       'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaW1vIiwiaWF0IjoxNjk2MTA1OTI4LCJleHAiOjE2OTYxOTIzMjh9.yncG2UOkuST4hTijo0hM_RtYDog37gTQsPiavVpFFf8';
     const headers = new HttpHeaders({

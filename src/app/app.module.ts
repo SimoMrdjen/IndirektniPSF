@@ -14,7 +14,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
@@ -24,6 +24,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { AuthInterceptService } from './auth-intercept.service';
 
 registerLocaleData(en);
 
@@ -54,7 +55,10 @@ registerLocaleData(en);
     NzSelectModule,
     NzButtonModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptService, multi: true },
+    { provide: NZ_I18N, useValue: en_US },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
