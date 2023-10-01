@@ -45,8 +45,14 @@ export class EditUserComponent implements OnInit, OnDestroy {
 
   editUser() {
     if (this.user) {
-      //this.editUserService.setUser(this.user);
-      this.userService.users.push(this.user);
+      this.editUserService.editUser(this.user).subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (err) => {
+          alert(err.message);
+        },
+      });
     }
     this.close();
     this.editUserService.setUser(new User());

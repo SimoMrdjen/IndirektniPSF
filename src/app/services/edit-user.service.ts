@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -14,7 +14,37 @@ export class EditUserService implements OnInit {
   public visibility$ = this.visibilitySubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
+
   ngOnInit(): void {}
+
+  getParams(): HttpParams {
+    let params = new HttpParams();
+    if (this.user?.sifraradnika) {
+      params = params.append('id', this.user.sifraradnika);
+    }
+    return params;
+  }
+
+  getHeaders(): HttpHeaders {
+    const token = //getToken();
+      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaW1vIiwiaWF0IjoxNjk2MTc2NDI5LCJleHAiOjE2OTYyNjI4Mjl9.3K0sb-pxNFqA_OlLb9tmz3RHCd1OAKAqpfQlijQwYNU';
+    return new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+  }
+
+  ////////////////////////////////////
+
+  editUser(user: User): Observable<User> {
+    const options = {
+      headers: this.getHeaders(),
+      params: this.getParams(),
+      responseType: 'json' as 'json',
+    };
+    return this.http.put<User>(this.url, user, options);
+  }
+
+  ////////////////////////////////////
 
   getToken(): any {
     if (localStorage.getItem('token')?.length === 0) {
@@ -26,11 +56,20 @@ export class EditUserService implements OnInit {
 
   getUsers(): Observable<User[]> {
     const token =
-      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaW1vMSIsImlhdCI6MTY5NTkwODM3NCwiZXhwIjoxNjk1OTk0Nzc0fQ.GfzIpndBHj8wxmLjgfApxa6TeW-yofeOyVj0SvYRk18';
+      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaW1vIiwiaWF0IjoxNjk2MTA1OTI4LCJleHAiOjE2OTYxOTIzMjh9.yncG2UOkuST4hTijo0hM_RtYDog37gTQsPiavVpFFf8';
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token, //this.getToken(),
     });
     return this.http.get<User[]>(this.url, { headers: headers });
+  }
+
+  getUsersWithoutSecurity(): Observable<User[]> {
+    const token =
+      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaW1vIiwiaWF0IjoxNjk2MTc2NDI5LCJleHAiOjE2OTYyNjI4Mjl9.3K0sb-pxNFqA_OlLb9tmz3RHCd1OAKAqpfQlijQwYNU';
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http.get<User[]>(this.url, { headers });
   }
 
   setUser(user: User): void {

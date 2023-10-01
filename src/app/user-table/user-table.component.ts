@@ -1,7 +1,8 @@
+import { User } from './../models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { EditUserService } from '../services/edit-user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-table',
@@ -12,10 +13,12 @@ export class UserTableComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private editUserService: EditUserService
+    private editUserService: EditUserService,
+    private http: HttpClient
   ) {}
+
   ngOnInit(): void {
-    this.getUsers();
+    this.getUsersWithoutSecurity();
   }
 
   getUsers() {
@@ -33,5 +36,13 @@ export class UserTableComponent implements OnInit {
     this.editUserService.setUser(user);
     console.log(user);
     this.editUserService.open();
+  }
+
+  getUsersWithoutSecurity() {
+    // this.http.get<User[]>('http://localhost:8080/api/v1/users')
+    this.editUserService.getUsersWithoutSecurity().subscribe((response) => {
+      console.log(response);
+      this.users = response;
+    });
   }
 }

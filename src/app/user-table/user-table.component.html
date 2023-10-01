@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
+      <td>{{ user.sifraradnika }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.role }}</td>
       <td>
@@ -20,7 +20,7 @@
         <button nz-button nzType="primary" (click)="editUser(user)">
           Edit
         </button>
-        <a [routerLink]="['/user', user.id]">
+        <a [routerLink]="['/user', user.sifraradnika]">
           <button nz-button nzType="primary">Show user</button></a
         >
       </td>
