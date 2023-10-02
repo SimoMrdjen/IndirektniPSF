@@ -39,7 +39,6 @@ export class UserTableComponent implements OnInit {
   }
 
   getUsersWithoutSecurity() {
-    // this.http.get<User[]>('http://localhost:8080/api/v1/users')
     this.editUserService.getUsersWithoutSecurity().subscribe((response) => {
       console.log(response);
       this.users = response;

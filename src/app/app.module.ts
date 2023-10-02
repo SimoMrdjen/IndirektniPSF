@@ -24,7 +24,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { AuthInterceptService } from './auth-intercept.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 registerLocaleData(en);
 
@@ -56,7 +56,11 @@ registerLocaleData(en);
     NzButtonModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptService, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
     { provide: NZ_I18N, useValue: en_US },
   ],
   bootstrap: [AppComponent],
