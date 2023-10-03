@@ -19,7 +19,11 @@ export class TokenInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('jwt_token');
+    if (request.url.endsWith('/authenticate')) {
+      return next.handle(request);
+    }
+
+    const token = localStorage.getItem('token');
     if (!token || this.tokenService.isTokenExpired(token)) {
       this.router.navigate(['/login']);
       return new Observable<HttpEvent<any>>();

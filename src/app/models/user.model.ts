@@ -4,7 +4,8 @@ export class User {
   constructor(
     public sifraradnika?: number,
     public email?: string,
-    public role?: Role
+    public role?: Role,
+    public password?: string
   ) {}
 
   get roleString(): string | undefined {

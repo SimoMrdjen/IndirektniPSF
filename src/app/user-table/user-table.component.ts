@@ -18,7 +18,7 @@ export class UserTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUsersWithoutSecurity();
+    this.getUsers();
   }
 
   getUsers() {

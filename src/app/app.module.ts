@@ -25,6 +25,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { TokenService } from './services/token.service';
 
 registerLocaleData(en);
 
@@ -62,6 +63,7 @@ registerLocaleData(en);
       multi: true,
     },
     { provide: NZ_I18N, useValue: en_US },
+    TokenService,
   ],
   bootstrap: [AppComponent],
 })

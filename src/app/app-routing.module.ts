@@ -7,7 +7,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
-  { path: '', component: LoginFormComponent },
+  { path: '', component: UserTableComponent },
   { path: 'ucitavanje', component: UcitavanjeComponent },
   { path: 'storniranje', component: StorniranjeComponent },
   { path: 'login', component: LoginFormComponent },

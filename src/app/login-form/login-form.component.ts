@@ -1,10 +1,15 @@
+import { LoginService } from './../services/login.service';
 import { Component } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
+import { User } from '../models/user.model';
+import { Router } from '@angular/router';
+import { EditUserService } from '../services/edit-user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,20 +17,45 @@ import {
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-  validateForm: FormGroup<{
-    email: FormControl<string>;
-    password: FormControl<string>;
-    remember: FormControl<boolean>;
-  }> = this.fb.group({
+  user: User = new User();
+
+  validateForm: FormGroup = this.fb.group({
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
     remember: [true],
   });
 
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router,
+    private editUserService: EditUserService
+  ) {}
+
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      this.user.email = this.validateForm.value.email;
+      this.user.password = this.validateForm.value.password;
+      console.log('User in submitForm', this.user);
+
+      this.loginService.login(this.user).subscribe({
+        next: (response) => {
+          console.log('Inside next from subscribe of submitForm');
+          localStorage.setItem('token', response.access_token);
+          this.router.navigate(['/users']);
+        },
+        error: (err) => {
+          alert(err.message);
+        },
+        complete: () => {
+          console.log('Observable completed');
+        },
+      });
+      this.close();
+      this.editUserService.setUser(new User());
     } else {
+      console.log('Forms are invalid from submitForm');
+
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
@@ -35,5 +65,7 @@ export class LoginFormComponent {
     }
   }
 
-  constructor(private fb: NonNullableFormBuilder) {}
+  close(): void {
+    console.log('This is close');
+  }
 }
