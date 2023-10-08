@@ -3,6 +3,7 @@ import { EditUserService } from '../services/edit-user.service';
 import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
 import { UserService } from '../services/user.service';
+import { Role } from '../models/role.model';
 
 @Component({
   selector: 'app-edit-user',
@@ -12,6 +13,8 @@ export class EditUserComponent implements OnInit, OnDestroy {
   visible = false;
   user: User | null = null;
   private visibilitySubscription: Subscription | undefined;
+  roles = Object.keys(Role).filter((k) => typeof Role[k as any] === 'number');
+  addingUser: boolean = true;
 
   constructor(
     private editUserService: EditUserService,
@@ -43,11 +46,26 @@ export class EditUserComponent implements OnInit, OnDestroy {
     this.editUserService.open();
   }
 
+  onEditClick() {
+    //this.addingUser = false;
+    this.editOrAddUser();
+  }
+
+  editOrAddUser() {
+    if (true) {
+      this.addUser();
+    } else {
+      this.editUser();
+      this.editUserService.addingUser = true;
+    }
+  }
+
   editUser() {
     if (this.user) {
       this.editUserService.editUser(this.user).subscribe({
         next: (response) => {
           console.log(response);
+          alert('User is succesfully edited! ' + response.email);
         },
         error: (err) => {
           alert(err.message);
@@ -56,5 +74,26 @@ export class EditUserComponent implements OnInit, OnDestroy {
     }
     this.close();
     this.editUserService.setUser(new User());
+  }
+
+  addUser() {
+    if (this.user) {
+      this.editUserService.addUser(this.user).subscribe({
+        next: (response) => {
+          console.log(response);
+          alert('User is succesfully added! ' + response.email);
+        },
+        error: (err) => {
+          alert(err.message);
+        },
+      });
+    }
+    this.close();
+    this.editUserService.setUser(new User());
+  }
+
+  onAddingClick() {
+    this.editUserService.addingUser = true;
+    this.open();
   }
 }

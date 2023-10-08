@@ -4,8 +4,13 @@ export class User {
   constructor(
     public sifraradnika?: number,
     public email?: string,
-    public role?: Role,
-    public password?: string
+    public role = Role.USER,
+    public password?: string,
+    public za_sif_sekret?: number,
+    public sif_oblast?: number,
+    public ime?: string,
+    public lozinka?: string,
+    public sifra_pp?: number
   ) {}
 
   get roleString(): string | undefined {

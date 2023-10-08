@@ -12,6 +12,7 @@ export class EditUserService implements OnInit {
   public user: User | null = null;
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();
+  public addingUser: boolean = true;
 
   constructor(private http: HttpClient, private router: Router) {
     console.log('constructor() is running in service');
@@ -38,11 +39,26 @@ export class EditUserService implements OnInit {
     return this.http.put<User>(this.url, user, options);
   }
 
-  getUsers(): Observable<User[]> {
+  addUser(user: User): Observable<User> {
+    console.log('editUser is running');
+    const options = {
+      params: this.getParams(),
+      responseType: 'json' as 'json',
+    };
+    return this.http.post<User>(this.url, user, options);
+  }
+
+  getUsers(pageIndex: number = 1, pageSize: number = 10): Observable<User[]> {
     return this.http.get<User[]>(this.url);
   }
 
-  getUsersWithoutSecurity(): Observable<User[]> {
+  getUsersWithoutSecurity(
+    pageIndex: number = 1,
+    pageSize: number = 10
+  ): Observable<User[]> {
+    const params = new HttpParams()
+      .set('pageIndex', pageIndex.toString())
+      .set('pageSize', pageSize.toString());
     return this.http.get<User[]>(this.url);
   }
 

@@ -1,5 +1,5 @@
 import { LoginService } from './../services/login.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,7 +16,7 @@ import { EditUserService } from '../services/edit-user.service';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css'],
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
   user: User = new User();
 
   validateForm: FormGroup = this.fb.group({
@@ -31,6 +31,8 @@ export class LoginFormComponent {
     private router: Router,
     private editUserService: EditUserService
   ) {}
+
+  ngOnInit(): void {}
 
   submitForm(): void {
     if (this.validateForm.valid) {
