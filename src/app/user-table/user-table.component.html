@@ -1,14 +1,7 @@
 <br />
 <app-edit-user></app-edit-user>
 <hr />
-<nz-table
-  [nzData]="users"
-  #fixedTable
-  [nzScroll]="{ x: '1000px', y: '500px' }"
-  [nzPageSize]="pageSize"
-  [nzTotal]="totalItems"
-  (nzPageIndexChange)="onPageChange($event)"
->
+<nz-table [nzData]="users" #fixedTable [nzScroll]="{ x: '1000px', y: '500px' }">
   <thead>
     <tr>
       <th>Id</th>

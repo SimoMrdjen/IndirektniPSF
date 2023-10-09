@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { EditUserService } from '../services/edit-user.service';
 import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { Role } from '../models/role.model';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,11 +15,11 @@ export class EditUserComponent implements OnInit, OnDestroy {
   user: User | null = null;
   private visibilitySubscription: Subscription | undefined;
   roles = Object.keys(Role).filter((k) => typeof Role[k as any] === 'number');
-  addingUser: boolean = true;
 
   constructor(
     private editUserService: EditUserService,
-    private userService: UserService
+    private userService: UserService,
+    private notification: NzNotificationService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +35,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Clean up the subscription when the component is destroyed
     this.visibilitySubscription?.unsubscribe();
   }
 
@@ -46,13 +46,8 @@ export class EditUserComponent implements OnInit, OnDestroy {
     this.editUserService.open();
   }
 
-  onEditClick() {
-    //this.addingUser = false;
-    this.editOrAddUser();
-  }
-
   editOrAddUser() {
-    if (true) {
+    if (this.editUserService.addingUser) {
       this.addUser();
     } else {
       this.editUser();
@@ -65,7 +60,12 @@ export class EditUserComponent implements OnInit, OnDestroy {
       this.editUserService.editUser(this.user).subscribe({
         next: (response) => {
           console.log(response);
-          alert('User is succesfully edited! ' + response.email);
+
+          this.notification.create(
+            'success',
+            'Succesfull',
+            `${response.email} is succesfuly edited!`
+          );
         },
         error: (err) => {
           alert(err.message);
@@ -81,7 +81,11 @@ export class EditUserComponent implements OnInit, OnDestroy {
       this.editUserService.addUser(this.user).subscribe({
         next: (response) => {
           console.log(response);
-          alert('User is succesfully added! ' + response.email);
+          this.notification.create(
+            'success',
+            'Succesfull',
+            `${response.email} is succesfuly added!`
+          );
         },
         error: (err) => {
           alert(err.message);

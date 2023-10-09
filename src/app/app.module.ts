@@ -26,8 +26,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { TokenService } from './services/token.service';
-import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-import { PaginationUsersComponent } from './pagination-users/pagination-users.component';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 registerLocaleData(en);
 
@@ -41,7 +40,6 @@ registerLocaleData(en);
     UserTableComponent,
     EditUserComponent,
     UserDetailsComponent,
-    PaginationUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +56,7 @@ registerLocaleData(en);
     NzDatePickerModule,
     NzSelectModule,
     NzButtonModule,
-    NzPaginationModule,
+    NzNotificationModule,
   ],
   providers: [
     {

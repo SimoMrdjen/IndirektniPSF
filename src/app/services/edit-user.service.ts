@@ -48,7 +48,7 @@ export class EditUserService implements OnInit {
     return this.http.post<User>(this.url, user, options);
   }
 
-  getUsers(pageIndex: number = 1, pageSize: number = 10): Observable<User[]> {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
   }
 

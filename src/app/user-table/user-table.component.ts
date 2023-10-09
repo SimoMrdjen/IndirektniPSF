@@ -11,10 +11,6 @@ import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 })
 export class UserTableComponent implements OnInit {
   public users: User[] = [];
-  public usersPaginated: User[] = [];
-  pageSize = 10;
-  totalItems = 0;
-  currentPage = 1;
 
   constructor(
     private userService: UserService,
@@ -24,19 +20,6 @@ export class UserTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-  }
-
-  onPageChange(pageIndex: number): void {
-    console.log('paginating');
-
-    this.currentPage = pageIndex;
-    this.fetchData();
-  }
-
-  fetchData(): void {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.usersPaginated = this.users.slice(startIndex, endIndex);
   }
 
   getUsers() {
@@ -53,8 +36,8 @@ export class UserTableComponent implements OnInit {
   }
 
   editUser(user: User) {
-    this.editUserService.setUser(user);
     this.editUserService.addingUser = false;
+    this.editUserService.setUser(user);
     console.log(user);
     this.editUserService.open();
   }
