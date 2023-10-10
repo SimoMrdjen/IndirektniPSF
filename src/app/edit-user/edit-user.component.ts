@@ -109,9 +109,9 @@ export class EditUserComponent implements OnInit, OnDestroy {
     this.open();
   }
 
-  /* ngOnChanges(changes: SimpleChanges) {
-    if (changes['addingUser']) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['title']) {
       console.log('addingUser changed to:', changes['addingUser'].currentValue);
     }
-  }*/
+  }
 }
