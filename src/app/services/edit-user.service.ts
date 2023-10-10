@@ -12,7 +12,7 @@ export class EditUserService implements OnInit {
   public user: User | null = null;
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();
-  public addingUser: boolean = true;
+  public isAddingUser: boolean = true;
 
   constructor(private http: HttpClient, private router: Router) {
     console.log('constructor() is running in service');

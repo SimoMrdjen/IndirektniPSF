@@ -53,10 +53,8 @@
             >Prijavi se</a
           >
         </button>
-        <button type="button" class="btn btn-secondary">
-          <a [routerLink]="['/']" class="nav-link px-2 text-white">
-            Odjavi se</a
-          >
+        <button type="button" class="btn btn-secondary" (click)="onLogout()">
+          Odjavi se
         </button>
       </div>
     </div>

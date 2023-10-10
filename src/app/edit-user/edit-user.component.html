@@ -1,10 +1,10 @@
-<button nz-button nzType="primary" (click)="onAddingClick()">Create</button>
+<button nz-button nzType="primary" (click)="openAddUser()">Create</button>
 <nz-drawer
   [nzBodyStyle]="{ overflow: 'auto' }"
   [nzMaskClosable]="false"
   [nzWidth]="720"
   [nzVisible]="visible"
-  nzTitle="Create"
+  nzTitle="{{ title }}"
   [nzFooter]="footerTpl"
   (nzOnClose)="close()"
 >

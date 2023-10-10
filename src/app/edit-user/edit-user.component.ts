@@ -1,4 +1,10 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { EditUserService } from '../services/edit-user.service';
 import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
@@ -15,6 +21,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   user: User | null = null;
   private visibilitySubscription: Subscription | undefined;
   roles = Object.keys(Role).filter((k) => typeof Role[k as any] === 'number');
+  @Input() title: string = '';
 
   constructor(
     private editUserService: EditUserService,
@@ -47,11 +54,11 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   editOrAddUser() {
-    if (this.editUserService.addingUser) {
+    if (this.editUserService.isAddingUser) {
       this.addUser();
     } else {
       this.editUser();
-      this.editUserService.addingUser = true;
+      this.editUserService.isAddingUser = true;
     }
   }
 
@@ -96,8 +103,15 @@ export class EditUserComponent implements OnInit, OnDestroy {
     this.editUserService.setUser(new User());
   }
 
-  onAddingClick() {
-    this.editUserService.addingUser = true;
+  openAddUser() {
+    this.title = 'Create';
+    this.editUserService.isAddingUser = true;
     this.open();
   }
+
+  /* ngOnChanges(changes: SimpleChanges) {
+    if (changes['addingUser']) {
+      console.log('addingUser changed to:', changes['addingUser'].currentValue);
+    }
+  }*/
 }

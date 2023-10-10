@@ -11,6 +11,7 @@ import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 })
 export class UserTableComponent implements OnInit {
   public users: User[] = [];
+  titleParent: string = '';
 
   constructor(
     private userService: UserService,
@@ -35,8 +36,9 @@ export class UserTableComponent implements OnInit {
     });
   }
 
-  editUser(user: User) {
-    this.editUserService.addingUser = false;
+  openEditUser(user: User) {
+    this.titleParent = 'Edit';
+    this.editUserService.isAddingUser = false;
     this.editUserService.setUser(user);
     console.log(user);
     this.editUserService.open();

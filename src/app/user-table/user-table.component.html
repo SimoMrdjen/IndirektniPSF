@@ -1,5 +1,5 @@
 <br />
-<app-edit-user></app-edit-user>
+<app-edit-user [title]="titleParent"></app-edit-user>
 <hr />
 <nz-table [nzData]="users" #fixedTable [nzScroll]="{ x: '1000px', y: '500px' }">
   <thead>
@@ -26,7 +26,7 @@
       <td>{{ user.lozinka }}</td>
       <td>
         <nz-divider nzType="vertical"></nz-divider>
-        <button nz-button nzType="primary" (click)="editUser(user)">
+        <button nz-button nzType="primary" (click)="openEditUser(user)">
           Edit
         </button>
       </td>
