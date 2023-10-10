@@ -106,6 +106,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
   openAddUser() {
     this.title = 'Create';
     this.editUserService.isAddingUser = true;
+    this.editUserService.user = new User();
     this.open();
   }
 
