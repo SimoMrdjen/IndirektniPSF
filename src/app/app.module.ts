@@ -27,7 +27,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { TokenService } from './services/token.service';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
-
+//import { LayOutComponent } from './lay-out/lay-out.component';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 registerLocaleData(en);
 
 @NgModule({
@@ -40,6 +44,8 @@ registerLocaleData(en);
     UserTableComponent,
     EditUserComponent,
     UserDetailsComponent,
+    // LayOutComponent,
+    DropdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +63,9 @@ registerLocaleData(en);
     NzSelectModule,
     NzButtonModule,
     NzNotificationModule,
+    NzLayoutModule,
+    NzBreadCrumbModule,
+    NzDropDownModule,
   ],
   providers: [
     {
