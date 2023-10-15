@@ -67,7 +67,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
       this.editUserService.editUser(this.user).subscribe({
         next: (response) => {
           console.log(response);
-
           this.notification.create(
             'success',
             'Succesfull',
@@ -75,7 +74,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
           );
         },
         error: (err) => {
-          alert(err.message);
+          this.notification.create('error', 'Error!', `Error in editing!`);
         },
       });
     }

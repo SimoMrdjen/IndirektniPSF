@@ -6,17 +6,46 @@
 
 <nz-layout>
   <nz-header>
-    <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal">
       <li nz-menu-item>
-        <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-white"
-          >Ucitavanje</a
-        >
+        <img src="assets/APV.png" alt="APV Logo" class="header-image" />
       </li>
       <li nz-menu-item>
         <app-dropdown />
       </li>
-      <li nz-menu-item>nav 3</li>
+
+      <li nz-menu-item>
+        <app-drop-odobravanje></app-drop-odobravanje>
+      </li>
+
+      <li nz-menu-item>
+        <app-drop-overavanje />
+      </li>
+
+      <li nz-menu-item>
+        <app-drop-storno />
+      </li>
+
+      <li nz-menu-item>
+        <app-download />
+      </li>
+
+      <li nz-menu-item>
+        <button nz-button nzGhost (click)="onLogout()" class="logout-button">
+          Odjavi se
+        </button>
+      </li>
+
+      <li nz-menu-item>
+        <button nz-button nzGhost class="logout-button">
+          <a
+            [routerLink]="['/users']"
+            class="nav-link px-2 text-white"
+            *ngIf="role == Role.ADMIN"
+            >Korisnici</a
+          >
+        </button>
+      </li>
     </ul>
   </nz-header>
   <nz-content>
@@ -29,5 +58,7 @@
       <router-outlet></router-outlet>
     </div>
   </nz-content>
-  <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+  <nz-footer>
+    <img src="assets/APV.png" alt="APV Logo" class="footer-image" />
+  </nz-footer>
 </nz-layout>

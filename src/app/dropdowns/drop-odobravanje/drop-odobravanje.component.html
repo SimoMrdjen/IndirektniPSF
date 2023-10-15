@@ -1,0 +1,23 @@
+<a nz-dropdown [nzDropdownMenu]="menu" class="dropdown-title text-white">
+  Odobravanje
+  <span nz-icon nzType="down"></span>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li nz-menu-item>
+      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+        >Zakljucni list</a
+      >
+    </li>
+    <li nz-menu-item>
+      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+        >IO obrazac</a
+      >
+    </li>
+    <li nz-menu-item>
+      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+        >Obrazac 5</a
+      >
+    </li>
+  </ul>
+</nz-dropdown-menu>

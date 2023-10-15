@@ -1,3 +1,4 @@
+import { Role } from './../models/role.model';
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -44,6 +45,8 @@ export class LoginFormComponent implements OnInit {
         next: (response) => {
           console.log('Inside next from subscribe of submitForm');
           localStorage.setItem('token', response.access_token);
+          localStorage.setItem('role', response.role);
+
           this.router.navigate(['/users']);
         },
         error: (err) => {

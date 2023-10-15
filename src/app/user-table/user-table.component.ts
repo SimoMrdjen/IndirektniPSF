@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { EditUserService } from '../services/edit-user.service';
 import { HttpClient } from '@angular/common/http';
-import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 
 @Component({
   selector: 'app-user-table',

@@ -4,7 +4,7 @@ export class User {
   constructor(
     public sifraradnika?: number,
     public email?: string,
-    public role = Role.USER,
+    public role?: Role,
     public password?: string,
     public za_sif_sekret?: number,
     public sif_oblast?: number,
