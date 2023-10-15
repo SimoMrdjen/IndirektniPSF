@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
 
   onLogout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 }
