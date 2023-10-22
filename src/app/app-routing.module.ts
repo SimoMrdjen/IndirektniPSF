@@ -5,9 +5,10 @@ import { UcitavanjeComponent } from './ucitavanje/ucitavanje.component';
 import { StorniranjeComponent } from './storniranje/storniranje.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', component: UcitavanjeComponent },
+  { path: '', component: HomePageComponent },
   { path: 'ucitavanje', component: UcitavanjeComponent },
   { path: 'storniranje', component: StorniranjeComponent },
   { path: 'login', component: LoginFormComponent },

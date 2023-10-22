@@ -1,0 +1,15 @@
+<nz-upload
+  nzType="drag"
+  [nzMultiple]="false"
+  [nzCustomRequest]="dummyRequest"
+  (nzChange)="handleChange($event)"
+>
+  <p class="ant-upload-drag-icon">
+    <span nz-icon nzType="inbox"></span>
+  </p>
+  <p class="ant-upload-text">Click or drag file to this area</p>
+</nz-upload>
+<hr />
+<button type="button" (click)="sendFile()" class="btn btn-secondary">
+  Ucitaj obrazac
+</button>

@@ -5,7 +5,10 @@
 <nz-dropdown-menu #menu="nzDropdownMenu">
   <ul nz-menu nzSelectable>
     <li nz-menu-item>
-      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+      <a
+        [routerLink]="['/ucitavanje']"
+        class="nav-link px-2 text-black"
+        (click)="setTypeOfObrazac('zakljucni_list')"
         >Zakljucni list</a
       >
     </li>

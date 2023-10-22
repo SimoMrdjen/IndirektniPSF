@@ -47,7 +47,7 @@ export class LoginFormComponent implements OnInit {
           localStorage.setItem('token', response.access_token);
           localStorage.setItem('role', response.role);
 
-          this.router.navigate(['/users']);
+          this.router.navigate(['/']);
         },
         error: (err) => {
           alert(err.message);

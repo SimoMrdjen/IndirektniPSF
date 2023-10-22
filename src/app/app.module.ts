@@ -38,6 +38,9 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { DownloadComponent } from './download/download.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { HomePageComponent } from './home-page/home-page.component';
 
 registerLocaleData(en);
 
@@ -56,6 +59,8 @@ registerLocaleData(en);
     DropOveravanjeComponent,
     DropStornoComponent,
     DownloadComponent,
+    UploadFileComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,7 @@ registerLocaleData(en);
     NzLayoutModule,
     NzBreadCrumbModule,
     NzDropDownModule,
+    NzUploadModule,
   ],
   providers: [
     {
