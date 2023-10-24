@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BASE_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FileUploadService {
-  private readonly url = 'http://localhost:8080/api';
+  private readonly url = BASE_URL;
   kvartal?: number;
 
   constructor(private http: HttpClient) {}
@@ -22,7 +23,7 @@ export class FileUploadService {
       responseType: 'text' as 'text',
     };
     return this.http.post(
-      this.url + '/' + typeOfObrazac + '/' + kvartal,
+      this.url + typeOfObrazac + '/' + kvartal,
       formData,
       options
     );

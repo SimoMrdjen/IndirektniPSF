@@ -7,7 +7,5 @@ import { ZakljucniList } from '../models/zakljucni-list.model';
   styleUrls: ['./storniranje.component.css'],
 })
 export class StorniranjeComponent implements OnInit {
-  public zakList: ZakljucniList = new ZakljucniList();
-
   ngOnInit(): void {}
 }

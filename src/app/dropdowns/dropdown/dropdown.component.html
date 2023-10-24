@@ -13,12 +13,18 @@
       >
     </li>
     <li nz-menu-item>
-      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+      <a
+        [routerLink]="['/ucitavanje']"
+        class="nav-link px-2 text-black"
+        (click)="setTypeOfObrazac('obrazac_io')"
         >IO obrazac</a
       >
     </li>
     <li nz-menu-item>
-      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+      <a
+        [routerLink]="['/ucitavanje']"
+        class="nav-link px-2 text-black"
+        (click)="setTypeOfObrazac('obrazac_zb')"
         >Obrazac 5</a
       >
     </li>
