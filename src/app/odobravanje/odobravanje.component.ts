@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ZakljucniList } from '../models/zakljucni-list.model';
-import { ZakljucniListService } from '../services/zakljucni-list.service';
+import { Obrazac } from '../models/zakljucni-list.model';
+import { ObrazacService } from '../services/obrazac.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { TypeOfObrazacService } from '../services/type-of-obrazac.service';
@@ -11,25 +11,25 @@ import { TypeOfObrazacService } from '../services/type-of-obrazac.service';
   styleUrls: ['./odobravanje.component.css'],
 })
 export class OdobravanjeComponent implements OnInit {
-  public zakLists: ZakljucniList[] = [];
+  public obrazacList: Obrazac[] = [];
 
   constructor(
     private notification: NzNotificationService,
-    private service: ZakljucniListService,
+    private service: ObrazacService,
     private router: Router,
     private typeService: TypeOfObrazacService
   ) {}
 
   ngOnInit(): void {
-    this.getZakList();
+    this.getObrazacZaRaiseStatus();
   }
 
-  getZakList() {
+  getObrazacZaRaiseStatus() {
     this.service.status = 0;
-    this.service.getZakList().subscribe({
+    this.service.getObrazacZaRaiseStatus().subscribe({
       next: (response) => {
         console.log(response);
-        this.zakLists = <any>response;
+        this.obrazacList = <any>response;
       },
       error: (err) => {
         this.notification.create(
@@ -41,16 +41,16 @@ export class OdobravanjeComponent implements OnInit {
     });
   }
 
-  raiseStatus(zakList: ZakljucniList) {
+  raiseStatus(zakList: Obrazac) {
     if (zakList.id !== undefined) {
       this.service.raiseStatus(zakList.id).subscribe({
         next: (response) => {
           console.log(response);
-          // this.zakList = <any>response;
+
           this.notification.create(
             'success',
             'Obrazac je uspesno odobren! ',
-            ''
+            response
           );
         },
         error: (err) => {
@@ -63,5 +63,6 @@ export class OdobravanjeComponent implements OnInit {
       });
     } else {
     }
+    this.router.navigate(['/']);
   }
 }

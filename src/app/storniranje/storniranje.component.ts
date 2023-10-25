@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ZakljucniList } from '../models/zakljucni-list.model';
+import { Obrazac } from '../models/zakljucni-list.model';
 
 @Component({
   selector: 'app-storniranje',

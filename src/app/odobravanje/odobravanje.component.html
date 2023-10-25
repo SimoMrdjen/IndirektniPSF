@@ -1,6 +1,6 @@
 <p>odobravanje works!</p>
 <nz-table
-  [nzData]="zakLists"
+  [nzData]="obrazacList"
   #fixedTable
   [nzScroll]="{ x: '1000px', y: '500px' }"
 >
@@ -17,18 +17,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let zakList of zakLists">
-      <td>{{ zakList.id }}</td>
-      <td>{{ zakList.date }}</td>
-      <td>{{ zakList.kvartal }}</td>
-      <td>{{ zakList.year }}</td>
-      <td>{{ zakList.version }}</td>
-      <td>{{ zakList.jbbk }}</td>
-      <td>{{ zakList.status }}</td>
+    <tr *ngFor="let obrazac of obrazacList">
+      <td>{{ obrazac.id }}</td>
+      <td>{{ obrazac.date }}</td>
+      <td>{{ obrazac.kvartal }}</td>
+      <td>{{ obrazac.year }}</td>
+      <td>{{ obrazac.version }}</td>
+      <td>{{ obrazac.jbbk }}</td>
+      <td>{{ obrazac.status }}</td>
 
       <td>
         <nz-divider nzType="vertical"></nz-divider>
-        <button nz-button nzType="primary" (click)="raiseStatus(zakList)">
+        <button nz-button nzType="primary" (click)="raiseStatus(obrazac)">
           Odobravanje
         </button>
       </td>

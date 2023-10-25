@@ -80,7 +80,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
             this.notification.create(
               'error',
               'Neuspesno ucitavanje!',
-              error.message
+              error.error
             );
           },
         });

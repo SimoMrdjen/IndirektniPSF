@@ -1,7 +1,7 @@
 import { FileUploadService } from './../services/file-upload.service';
 import { Component, OnInit } from '@angular/core';
 //import { ZakljucniList } from '../models/zakljucni-list.model';
-import { ZakljucniListService } from '../services/zakljucni-list.service';
+import { ObrazacService } from '../services/obrazac.service';
 
 @Component({
   selector: 'app-ucitavanje',
@@ -13,7 +13,7 @@ export class UcitavanjeComponent implements OnInit {
   selectedKvartal?: number;
 
   constructor(
-    private zakListService: ZakljucniListService,
+    private zakListService: ObrazacService,
     private fileService: FileUploadService
   ) {
     // this.zakList = this.zakListService.getZakList();

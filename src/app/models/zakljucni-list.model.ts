@@ -1,4 +1,4 @@
-export class ZakljucniList {
+export class Obrazac {
   public id?: number;
   public date?: Date;
   public kvartal?: number;
