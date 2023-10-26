@@ -37,6 +37,7 @@ export class OveravanjeComponent {
           'Ne postoji obrazac za overavanje ',
           err.error
         );
+        this.router.navigate(['/']);
       },
     });
   }
@@ -49,19 +50,20 @@ export class OveravanjeComponent {
           // this.zakList = <any>response;
           this.notification.create(
             'success',
-            'Obrazac je uspesno odobren! ',
+            'Obrazac je uspesno overen! ',
             ''
           );
         },
         error: (err) => {
           this.notification.create(
             'error',
-            'Odobravanje nije uspelo! ',
+            'Overavanje nije uspelo! ',
             err.error
           );
         },
       });
     } else {
     }
+    this.router.navigate(['/']);
   }
 }

@@ -8,9 +8,8 @@ import { BASE_URL } from '../constants';
   providedIn: 'root',
 })
 export class ObrazacService {
-
   obrazac = new Obrazac();
-  url = BASE_URL ;
+  url = BASE_URL;
   status = 0;
   typeOfObrazac = '';
 
@@ -28,22 +27,28 @@ export class ObrazacService {
       params: this.getParams(),
       responseType: 'json' as 'json',
     };
-    return this.http.get<Obrazac>(this.url +  this.typeOfObrazac, options);
+    return this.http.get<Obrazac>(this.url + this.typeOfObrazac, options);
   }
 
   raiseStatus(id: number) {
-    const options = {
+    const options: any = {
       responseType: 'text' as 'text',
     };
-    return this.http.put<any>(this.url+ this.typeOfObrazac + '/status/' + id, options);
+    return this.http.put<any>(
+      this.url + this.typeOfObrazac + '/status/' + id,
+      {},
+      options
+    );
   }
 
   //storno
- storno(id: number) {
+  storno(id: number) {
     const options = {
-      responseType: 'json' as 'json',
+      responseType: 'text' as 'json',
     };
-    return this.http.put<Obrazac>(this.url+ '/' + this.typeOfObrazac + '/' + id, options);
+    return this.http.put<Obrazac>(
+      this.url + '/' + this.typeOfObrazac + '/' + id,
+      options
+    );
   }
-
 }

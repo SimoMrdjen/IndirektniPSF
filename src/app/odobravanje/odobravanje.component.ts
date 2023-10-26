@@ -4,6 +4,7 @@ import { ObrazacService } from '../services/obrazac.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { TypeOfObrazacService } from '../services/type-of-obrazac.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-odobravanje',
@@ -35,8 +36,9 @@ export class OdobravanjeComponent implements OnInit {
         this.notification.create(
           'error',
           'Ne postoji obrazac za odobravanje ',
-          err.message
+          err.error
         );
+        this.router.navigate(['/']);
       },
     });
   }
@@ -46,18 +48,18 @@ export class OdobravanjeComponent implements OnInit {
       this.service.raiseStatus(zakList.id).subscribe({
         next: (response) => {
           console.log(response);
-
+          // this.zakList = <any>response;
           this.notification.create(
             'success',
             'Obrazac je uspesno odobren! ',
-            response
+            ''
           );
         },
         error: (err) => {
           this.notification.create(
             'error',
             'Odobravanje nije uspelo! ',
-            err.message
+            err.error
           );
         },
       });
@@ -65,4 +67,31 @@ export class OdobravanjeComponent implements OnInit {
     }
     this.router.navigate(['/']);
   }
+
+  // raiseStatus(zakList: Obrazac) {
+  //   if (zakList.id !== undefined) {
+  //     this.service.raiseStatus(zakList.id).subscribe({
+  //       next: (response: any) => {
+  //         if (response instanceof HttpResponse) {
+  //           const body: string = response.body;
+  //           console.log('Success block:', body);
+  //           this.notification.create(
+  //             'success',
+  //             'Obrazac je uspesno odobren!',
+  //             body
+  //           );
+  //         }
+  //       },
+  //       error: (err: HttpErrorResponse) => {
+  //         console.log('Error block:', err);
+  //         this.notification.create(
+  //           'error',
+  //           'Odobravanje nije uspelo!',
+  //           err.message
+  //         );
+  //       },
+  //     });
+  //   }
+  //   this.router.navigate(['/']);
+  // }
 }
