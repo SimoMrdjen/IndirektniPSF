@@ -5,17 +5,26 @@
 <nz-dropdown-menu #menu="nzDropdownMenu">
   <ul nz-menu nzSelectable>
     <li nz-menu-item>
-      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+      <a
+        [routerLink]="['/odobravanje']"
+        class="nav-link px-2 text-black"
+        (click)="setTypeOfObrazac('zakljucni_list')"
         >Zakljucni list</a
       >
     </li>
     <li nz-menu-item>
-      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+      <a
+        [routerLink]="['/odobravanje']"
+        class="nav-link px-2 text-black"
+        (click)="setTypeOfObrazac('obrazac_io')"
         >IO obrazac</a
       >
     </li>
     <li nz-menu-item>
-      <a [routerLink]="['/ucitavanje']" class="nav-link px-2 text-black"
+      <a
+        [routerLink]="['/odobravanje']"
+        class="nav-link px-2 text-black"
+        (click)="setTypeOfObrazac('obrazac_zb')"
         >Obrazac 5</a
       >
     </li>

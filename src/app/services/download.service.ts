@@ -2,12 +2,13 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BASE_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DownloadService {
-  private readonly url = 'http://localhost:8080/api/download/';
+  private readonly url = BASE_URL + 'download/';
   //public typeOfObrazac: string = '';
 
   constructor(private http: HttpClient) {}

@@ -1,3 +1,7 @@
+import {
+  NzNotificationModule,
+  NzNotificationService,
+} from 'ng-zorro-antd/notification';
 import { Role } from './../models/role.model';
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -30,7 +34,8 @@ export class LoginFormComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private editUserService: EditUserService
+    private editUserService: EditUserService,
+    private notification: NzNotificationService
   ) {}
 
   ngOnInit(): void {}
@@ -50,7 +55,12 @@ export class LoginFormComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error: (err) => {
-          alert(err.message);
+          this.notification.create(
+            'error',
+            'Neispravno korisnicko ime ili lozinka',
+            ''
+          );
+          //alert(err.message);
         },
         complete: () => {
           console.log('Observable completed');

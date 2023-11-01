@@ -1,3 +1,11 @@
-export class ZakljucniList {
-  constructor(public id?: number, public konto?: string) {}
+export class Obrazac {
+  public id?: number;
+  public date?: Date;
+  public kvartal?: number;
+  public year?: number;
+  public version?: number;
+  public jbbk?: number;
+  public status?: number;
+
+  constructor() {}
 }

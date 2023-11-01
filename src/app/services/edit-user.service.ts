@@ -3,12 +3,13 @@ import { User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BASE_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EditUserService implements OnInit {
-  private readonly url = 'http://localhost:8080/api/v1/users';
+  private readonly url = BASE_URL + 'v1/users';
   public user: User | null = null;
   private visibilitySubject = new BehaviorSubject<boolean>(false);
   public visibility$ = this.visibilitySubject.asObservable();

@@ -41,6 +41,8 @@ import { DownloadComponent } from './download/download.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { HomePageComponent } from './home-page/home-page.component';
+import { OdobravanjeComponent } from './odobravanje/odobravanje.component';
+import { OveravanjeComponent } from './overavanje/overavanje.component';
 
 registerLocaleData(en);
 
@@ -61,6 +63,8 @@ registerLocaleData(en);
     DownloadComponent,
     UploadFileComponent,
     HomePageComponent,
+    OdobravanjeComponent,
+    OveravanjeComponent,
   ],
   imports: [
     BrowserModule,
