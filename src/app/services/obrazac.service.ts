@@ -12,6 +12,7 @@ export class ObrazacService {
   url = BASE_URL;
   status = 0;
   typeOfObrazac = '';
+  kvartal = 1;
 
   constructor(private http: HttpClient) {}
 
@@ -47,7 +48,30 @@ export class ObrazacService {
       responseType: 'text' as 'json',
     };
     return this.http.put<Obrazac>(
-      this.url + '/' + this.typeOfObrazac + '/' + id,
+      this.url + this.typeOfObrazac + '/' + id,
+      options
+    );
+  }
+
+  getObrazacZaStorno() {
+    console.log('Type of obrazac: ' + this.typeOfObrazac);
+    const options = {
+      //params: this.getParams(),
+      responseType: 'json' as 'json',
+    };
+    return this.http.get<Obrazac>(
+      this.url + this.typeOfObrazac + '/storno/' + this.kvartal,
+      options
+    );
+  }
+
+  stornoObrazac(id: number) {
+    const options: any = {
+      responseType: 'text' as 'text',
+    };
+    return this.http.put<any>(
+      this.url + this.typeOfObrazac + '/storno/' + id,
+      {},
       options
     );
   }
