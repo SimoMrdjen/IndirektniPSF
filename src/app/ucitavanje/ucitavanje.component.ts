@@ -24,5 +24,6 @@ export class UcitavanjeComponent implements OnInit {
   setKvartal(kvartal: number): void {
     this.selectedKvartal = kvartal;
     this.fileService.kvartal = kvartal;
+    this.zakListService.kvartal = kvartal;
   }
 }

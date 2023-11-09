@@ -33,7 +33,7 @@ export class StorniranjeComponent implements OnInit {
           this.notification.create(
             'success',
             'Obrazac je uspesno storniran! ',
-            ''
+            response
           );
         },
         error: (err) => {

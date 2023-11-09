@@ -1,2 +1,35 @@
 <h2>Dobrodosli...</h2>
 
+<hr />
+<h4 *ngIf="!selectedKvartal">Izaberite kvartal za koji zelite da radite</h4>
+<h6 *ngIf="selectedKvartal">Izabrali ste rad sa kvartalom {{selectedKvartal}}. Kvartal mozete promeniti u padajucem meniju!</h6>
+
+<br>
+<!-- <div class="container"> -->
+<div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Izaberite kvartal
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a class="dropdown-item" (click)="setKvartal(1)">Kvartal 1.</a>
+    </li>
+    <li>
+      <a class="dropdown-item" (click)="setKvartal(2)">Kvartal 2.</a>
+    </li>
+    <li>
+      <a class="dropdown-item" (click)="setKvartal(3)">Kvartal 3.</a>
+    <li>
+      <a class="dropdown-item" (click)="setKvartal(4)">Kvartal 4.</a>
+    </li>
+    <li class="dropdown-item" (click)="setKvartal(5)">Zavrsni</li>
+  </ul>
+</div>
+<!-- </div> -->
+<br />
+<p>Izabrani kvartal: {{ selectedKvartal }}</p>

@@ -1,32 +1,32 @@
-<hr />
+<!--<hr />-->
 
-<!-- <div class="container"> -->
-<div class="dropdown">
-  <button
-    class="btn btn-secondary dropdown-toggle"
-    type="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    Izaberite kvartal
-  </button>
-  <ul class="dropdown-menu">
-    <li>
-      <a class="dropdown-item" (click)="setKvartal(1)">Kvartal 1.</a>
-    </li>
-    <li>
-      <a class="dropdown-item" (click)="setKvartal(2)">Kvartal 2.</a>
-    </li>
-    <li class="dropdown-item" (click)="setKvartal(3)">Kvartal 3.</li>
-    <li>
-      <a class="dropdown-item" (click)="setKvartal(4)">Kvartal 4.</a>
-    </li>
-    <li class="dropdown-item" (click)="setKvartal(5)">Zavrsni</li>
-  </ul>
-</div>
-<!-- </div> -->
-<br />
-<p>Izabrani kvartal: {{ selectedKvartal }}</p>
+<!--&lt;!&ndash; <div class="container"> &ndash;&gt;-->
+<!--<div class="dropdown">-->
+<!--  <button-->
+<!--    class="btn btn-secondary dropdown-toggle"-->
+<!--    type="button"-->
+<!--    data-bs-toggle="dropdown"-->
+<!--    aria-expanded="false"-->
+<!--  >-->
+<!--    Izaberite kvartal-->
+<!--  </button>-->
+<!--  <ul class="dropdown-menu">-->
+<!--    <li>-->
+<!--      <a class="dropdown-item" (click)="setKvartal(1)">Kvartal 1.</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a class="dropdown-item" (click)="setKvartal(2)">Kvartal 2.</a>-->
+<!--    </li>-->
+<!--    <li class="dropdown-item" (click)="setKvartal(3)">Kvartal 3.</li>-->
+<!--    <li>-->
+<!--      <a class="dropdown-item" (click)="setKvartal(4)">Kvartal 4.</a>-->
+<!--    </li>-->
+<!--    <li class="dropdown-item" (click)="setKvartal(5)">Zavrsni</li>-->
+<!--  </ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; </div> &ndash;&gt;-->
+<!--<br />-->
+<!--<p>Izabrani kvartal: {{ selectedKvartal }}</p>-->
 
 <hr />
-<app-upload-file *ngIf="selectedKvartal"></app-upload-file>
+<app-upload-file ></app-upload-file>

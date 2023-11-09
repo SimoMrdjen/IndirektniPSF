@@ -51,6 +51,7 @@ export class LoginFormComponent implements OnInit {
           console.log('Inside next from subscribe of submitForm');
           localStorage.setItem('token', response.access_token);
           localStorage.setItem('role', response.role);
+          localStorage.setItem('indirektni', response.indirektni);
 
           this.router.navigate(['/']);
         },

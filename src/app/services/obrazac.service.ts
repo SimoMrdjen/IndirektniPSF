@@ -12,7 +12,7 @@ export class ObrazacService {
   url = BASE_URL;
   status = 0;
   typeOfObrazac = '';
-  kvartal = 1;
+  kvartal?: number;
 
   constructor(private http: HttpClient) {}
 
@@ -65,11 +65,11 @@ export class ObrazacService {
     );
   }
 
-  stornoObrazac(id: number) {
+  stornoObrazac(id: number): Observable<any> {
     const options: any = {
-      responseType: 'text' as 'text',
+      responseType: 'text' as 'json',
     };
-    return this.http.put<any>(
+    return this.http.put(
       this.url + this.typeOfObrazac + '/storno/' + id,
       {},
       options
