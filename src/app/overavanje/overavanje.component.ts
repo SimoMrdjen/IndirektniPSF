@@ -4,6 +4,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ObrazacService } from '../services/obrazac.service';
 import { Router } from '@angular/router';
 import { TypeOfObrazacService } from '../services/type-of-obrazac.service';
+import { KvartalService } from '../services/kvartal.service';
 
 @Component({
   selector: 'app-overavanje',
@@ -17,7 +18,7 @@ export class OveravanjeComponent {
     private notification: NzNotificationService,
     private service: ObrazacService,
     private router: Router,
-    private typeService: TypeOfObrazacService
+    private kvartalService: KvartalService
   ) {}
 
   ngOnInit(): void {
@@ -25,26 +26,34 @@ export class OveravanjeComponent {
   }
 
   getObrazacZaRaiseStatus() {
-    this.service.status = 10;
-    this.service.getObrazacZaRaiseStatus().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.obrazacList = <any>response;
-      },
-      error: (err) => {
-        this.notification.create(
-          'error',
-          'Ne postoji obrazac za overavanje ',
-          err.error
-        );
-        this.router.navigate(['/']);
-      },
-    });
+    const kvartal = this.kvartalService.getKvartal();
+
+    if (kvartal !== undefined) {
+      this.service.getObrazacZaRaiseStatus(10, kvartal).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.obrazacList = <any>response;
+        },
+        error: (err) => {
+          this.notification.create(
+            'error',
+            'Ne postoji obrazac za overavanje ',
+            err.error
+          );
+          this.router.navigate(['/']);
+        },
+      });
+    } else {
+      // Handle the undefined case, perhaps show an error or use a default value
+      console.error('Kvartal is undefined');
+      this.router.navigate(['/']);
+    }
   }
 
   raiseStatus(zakList: Obrazac) {
-    if (zakList.id !== undefined) {
-      this.service.raiseStatus(zakList.id).subscribe({
+    const kvartal = this.kvartalService.getKvartal();
+    if (zakList.id !== undefined && kvartal !== undefined) {
+      this.service.raiseStatus(zakList.id, kvartal).subscribe({
         next: (response) => {
           console.log(response);
           // this.zakList = <any>response;

@@ -5,6 +5,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { TypeOfObrazacService } from '../services/type-of-obrazac.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { KvartalService } from '../services/kvartal.service';
 
 @Component({
   selector: 'app-odobravanje',
@@ -18,7 +19,7 @@ export class OdobravanjeComponent implements OnInit {
     private notification: NzNotificationService,
     private service: ObrazacService,
     private router: Router,
-    private typeService: TypeOfObrazacService
+    private kvartalService: KvartalService
   ) {}
 
   ngOnInit(): void {
@@ -26,26 +27,34 @@ export class OdobravanjeComponent implements OnInit {
   }
 
   getObrazacZaRaiseStatus() {
-    this.service.status = 0;
-    this.service.getObrazacZaRaiseStatus().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.obrazacList = <any>response;
-      },
-      error: (err) => {
-        this.notification.create(
-          'error',
-          'Ne postoji obrazac za odobravanje ',
-          err.error
-        );
-        this.router.navigate(['/']);
-      },
-    });
+    const kvartal = this.kvartalService.getKvartal();
+
+    if (kvartal !== undefined) {
+      this.service.getObrazacZaRaiseStatus(0, kvartal).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.obrazacList = <any>response;
+        },
+        error: (err) => {
+          this.notification.create(
+            'error',
+            'Ne postoji obrazac za odobravanje ',
+            err.error
+          );
+          this.router.navigate(['/']);
+        },
+      });
+    } else {
+      // Handle the undefined case, perhaps show an error or use a default value
+      console.error('Kvartal is undefined');
+      this.router.navigate(['/']);
+    }
   }
 
   raiseStatus(zakList: Obrazac) {
-    if (zakList.id !== undefined) {
-      this.service.raiseStatus(zakList.id).subscribe({
+    const kvartal = this.kvartalService.getKvartal();
+    if (zakList.id !== undefined && kvartal !== undefined) {
+      this.service.raiseStatus(zakList.id, kvartal).subscribe({
         next: (response) => {
           console.log(response);
           // this.zakList = <any>response;
@@ -67,31 +76,4 @@ export class OdobravanjeComponent implements OnInit {
     }
     this.router.navigate(['/']);
   }
-
-  // raiseStatus(zakList: Obrazac) {
-  //   if (zakList.id !== undefined) {
-  //     this.service.raiseStatus(zakList.id).subscribe({
-  //       next: (response: any) => {
-  //         if (response instanceof HttpResponse) {
-  //           const body: string = response.body;
-  //           console.log('Success block:', body);
-  //           this.notification.create(
-  //             'success',
-  //             'Obrazac je uspesno odobren!',
-  //             body
-  //           );
-  //         }
-  //       },
-  //       error: (err: HttpErrorResponse) => {
-  //         console.log('Error block:', err);
-  //         this.notification.create(
-  //           'error',
-  //           'Odobravanje nije uspelo!',
-  //           err.message
-  //         );
-  //       },
-  //     });
-  //   }
-  //   this.router.navigate(['/']);
-  // }
 }

@@ -5,6 +5,7 @@ import { FileUploadService } from '../services/file-upload.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { TypeOfObrazacService } from '../services/type-of-obrazac.service';
+import { KvartalService } from '../services/kvartal.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -28,13 +29,14 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     private notification: NzNotificationService,
     private fileUploadService: FileUploadService,
     private router: Router,
-    private typeService: TypeOfObrazacService
+    private typeService: TypeOfObrazacService,
+    private kvaratlService: KvartalService
   ) {}
 
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
-    this.kvartal = this.fileUploadService.kvartal;
+    this.kvartal = this.kvaratlService.getKvartal();
   }
 
   handleChange({ file, fileList }: NzUploadChangeParam): void {
