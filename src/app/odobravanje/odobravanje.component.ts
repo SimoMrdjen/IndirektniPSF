@@ -74,6 +74,6 @@ export class OdobravanjeComponent implements OnInit {
       });
     } else {
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/blank']);
   }
 }

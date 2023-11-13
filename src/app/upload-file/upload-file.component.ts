@@ -89,6 +89,6 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     } else {
       this.notification.create('error', 'Fajl nije odabran!', '');
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/blank']);
   }
 }

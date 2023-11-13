@@ -1,8 +1,10 @@
-<h2>Dobrodosli...</h2>
+<h2>Dobrodošli...</h2>
 
 <hr />
-<h4 *ngIf="!selectedKvartal">Izaberite kvartal za koji zelite da radite</h4>
-<h6 *ngIf="selectedKvartal">Izabrali ste rad sa kvartalom {{selectedKvartal}}. Kvartal mozete promeniti u padajucem meniju!</h6>
+<h6 *ngIf="!selectedKvartal">Izaberite kvartal za koji želite da radite</h6>
+<p *ngIf="selectedKvartal">Izabrali ste rad sa kvartalom {{selectedKvartal}}. </p>
+<p *ngIf="selectedKvartal">Kvartal možete promeniti u padajućem meniju! </p>
+
 
 <br>
 <!-- <div class="container"> -->
@@ -27,9 +29,9 @@
     <li>
       <a class="dropdown-item" (click)="setKvartal(4)">Kvartal 4.</a>
     </li>
-    <li class="dropdown-item" (click)="setKvartal(5)">Zavrsni</li>
+    <li class="dropdown-item" (click)="setKvartal(5)">Završni</li>
   </ul>
 </div>
 <!-- </div> -->
 <br />
-<p>Izabrani kvartal: {{ selectedKvartal }}</p>
+

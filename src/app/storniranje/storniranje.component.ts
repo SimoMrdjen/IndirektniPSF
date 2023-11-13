@@ -49,7 +49,7 @@ export class StorniranjeComponent implements OnInit {
       });
     } else {
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/blank']);
   }
 
   private getObrazacZaStorno() {
@@ -66,13 +66,13 @@ export class StorniranjeComponent implements OnInit {
             'Ne postoji obrazac za storniranje ',
             err.error
           );
-          this.router.navigate(['/']);
+          this.router.navigate(['/blank']);
         },
       });
     } else {
       // Handle the undefined case, perhaps show an error or use a default value
       console.error('Kvartal is undefined');
-      this.router.navigate(['/']);
+      this.router.navigate(['/blank']);
     }
   }
 }

@@ -73,6 +73,6 @@ export class OveravanjeComponent {
       });
     } else {
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/blank']);
   }
 }

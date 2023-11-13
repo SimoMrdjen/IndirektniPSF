@@ -23,7 +23,6 @@ import { DropOdobravanjeComponent } from './dropdowns/drop-odobravanje/drop-odob
 import { DropOveravanjeComponent } from './dropdowns/drop-overavanje/drop-overavanje.component';
 import { DropStornoComponent } from './dropdowns/drop-storno/drop-storno.component';
 import { RouterModule } from '@angular/router';
-
 // Individual NgZorro modules
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -43,6 +42,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { HomePageComponent } from './home-page/home-page.component';
 import { OdobravanjeComponent } from './odobravanje/odobravanje.component';
 import { OveravanjeComponent } from './overavanje/overavanje.component';
+import { BlankPageComponent } from './blank-page/blank-page.component';
+import { PregledComponent } from './pregled/pregled.component';
 
 registerLocaleData(en);
 
@@ -65,6 +66,8 @@ registerLocaleData(en);
     HomePageComponent,
     OdobravanjeComponent,
     OveravanjeComponent,
+    BlankPageComponent,
+    PregledComponent,
   ],
   imports: [
     BrowserModule,
