@@ -54,3 +54,7 @@
 .logout-button {
   margin-right: auto;  /* Push the button to the far right */
 }
+nz-content {
+  height:75vh; /* Adjust the value as needed */
+}
+
