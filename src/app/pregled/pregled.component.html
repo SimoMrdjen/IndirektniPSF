@@ -1,1 +1,44 @@
 <p>pregled works!</p>
+<p>review works!</p>
+<nz-table
+  [nzData]="obrazacList"
+  #fixedTable
+  [nzScroll]="{ x: '1000px', y: '500px' }"
+>
+  <thead>
+  <tr>
+    <th>Vrsta obrasca</th>
+    <th>Id</th>
+    <th>Datum</th>
+    <th>Godina</th>
+    <th>Kvartal</th>
+    <th>Verzija</th>
+    <th>Jbbk</th>
+    <th>Status</th>
+    <th>Validnost</th>
+    <th>Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let obrazac of obrazacList">
+    <td>{{ obrazac.obrazacType }}</td>
+    <td>{{ obrazac.id }}</td>
+    <td>{{ obrazac.date }}</td>
+    <td>{{ obrazac.year }}</td>
+    <td>{{ obrazac.kvartal }}</td>
+    <td>{{ obrazac.version }}</td>
+    <td>{{ obrazac.jbbk }}</td>
+    <td>{{ obrazac.status }}</td>
+    <td>{{ obrazac.storno }}</td>
+
+
+    <td>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button nz-button nzType="primary" (click)="getObrazacDetails(obrazac)">
+     Prikaz detalja
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+<p>* Ukoliko u tabeli nema podataka za neki dokument, znaci da dokument jos nije ucitan!  </p>

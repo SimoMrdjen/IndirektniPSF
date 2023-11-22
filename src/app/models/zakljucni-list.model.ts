@@ -6,6 +6,8 @@ export class Obrazac {
   public version?: number;
   public jbbk?: number;
   public status?: number;
+  public obrazacType?: string;
+  public storno?: string;
 
   constructor() {}
 }

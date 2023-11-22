@@ -41,7 +41,7 @@ export class OdobravanjeComponent implements OnInit {
             'Ne postoji obrazac za odobravanje ',
             err.error
           );
-          this.router.navigate(['/']);
+          this.router.navigate(['/blank']);
         },
       });
     } else {

@@ -98,4 +98,12 @@ export class ObrazacService {
       options
     );
   }
+
+  getReview(kvartal: number): Observable<any> {
+    const options = {
+      params: this.getParam(kvartal),
+      responseType: 'json' as 'json',
+    };
+    return this.http.get<Obrazac>(this.url + 'review/' + kvartal);
+  }
 }
