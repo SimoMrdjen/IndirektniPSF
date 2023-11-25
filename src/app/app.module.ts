@@ -10,7 +10,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,9 +43,12 @@ import { OdobravanjeComponent } from './odobravanje/odobravanje.component';
 import { OveravanjeComponent } from './overavanje/overavanje.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { PregledComponent } from './pregled/pregled.component';
+import { DetailsReviewComponent } from './details-review/details-review.component';
+import { CommonModule } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localeSrLatn from '@angular/common/locales/sr-Latn';
 
-registerLocaleData(en);
-
+registerLocaleData(localeSrLatn);
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,7 @@ registerLocaleData(en);
     OveravanjeComponent,
     BlankPageComponent,
     PregledComponent,
+    DetailsReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ registerLocaleData(en);
     NzBreadCrumbModule,
     NzDropDownModule,
     NzUploadModule,
+    CommonModule,
   ],
   providers: [
     {

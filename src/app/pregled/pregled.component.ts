@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Obrazac } from '../models/zakljucni-list.model';
+import { Obrazac } from '../models/obrazac.model';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ObrazacService } from '../services/obrazac.service';
 import { Router } from '@angular/router';
@@ -21,6 +21,9 @@ export class PregledComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(
+      'This is from review . Kvartal is : ' + this.kvartalService.getKvartal()
+    );
     this.getReview();
   }
 
@@ -48,5 +51,8 @@ export class PregledComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
-  getObrazacDetails(obrazac: Obrazac) {}
+  getObrazacDetails(obrazac: Obrazac) {
+    this.service.obrazac = obrazac;
+    this.router.navigate(['/details']);
+  }
 }

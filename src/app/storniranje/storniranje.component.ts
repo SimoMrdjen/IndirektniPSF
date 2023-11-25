@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Obrazac } from '../models/zakljucni-list.model';
+import { Obrazac } from '../models/obrazac.model';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ObrazacService } from '../services/obrazac.service';
 import { Router } from '@angular/router';
