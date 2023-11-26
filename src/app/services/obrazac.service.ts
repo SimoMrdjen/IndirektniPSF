@@ -1,10 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Obrazac } from '../models/obrazac.model';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { BASE_URL } from '../constants';
 import { KvartalService } from './kvartal.service';
 import { Router } from '@angular/router';
+import { ZakList } from '../models/zakList.model';
+import { ObrazacIO } from '../models/obrazac-io.model';
+import { Obrazac5 } from '../models/obrazac5.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +16,15 @@ export class ObrazacService {
   obrazac = new Obrazac();
   url = BASE_URL;
   typeOfObrazac = '';
+  obrazacIoList: ObrazacIO[] = [];
+  obrazac5List: Obrazac5[] = [];
+
+  private zakListsSource = new BehaviorSubject<ZakList[]>([]);
+  zakLists$ = this.zakListsSource.asObservable();
+
+  updateZakLists(zakLists: ZakList[]) {
+    this.zakListsSource.next(zakLists);
+  }
 
   constructor(
     private http: HttpClient,

@@ -34,15 +34,15 @@
   </tr>
   </tbody>
 </nz-table>
+<hr>
 
 <!--ZakljucniList-->
 <nz-table
-  [nzData]="zakLists"
-  *ngIf="zakLists.length > 0"
-  [nzTitle]="stavke"
-
-  #fixedTable
-  [nzFrontPagination]="false" [nzShowPagination]="false"
+        [nzData]="zakLists"
+        *ngIf="zakLists.length > 0"
+        [nzTitle]="stavke"
+        #fixedTable
+        [nzFrontPagination]="false" [nzShowPagination]="false"
 >
   <thead>
   <tr>
@@ -66,39 +66,38 @@
 
 <!--&lt;!&ndash;ObrazacIO&ndash;&gt;-->
 <!--<nz-table-->
-<!--  [nzData]="obrazacIoList"-->
-<!--  *ngIf="obrazacIoList"-->
-<!--  #fixedTable-->
-<!--  [nzFrontPagination]="false" [nzShowPagination]="false"-->
+<!--        [nzData]="obrazacIoList"-->
+<!--        *ngIf="obrazacIoList.length > 0"-->
+<!--        [nzFrontPagination]="false" [nzShowPagination]="false"-->
 <!--&gt;-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>redBrojAkt</th>-->
-<!--    <th>funkKlas</th>-->
-<!--    <th>konto</th>-->
-<!--    <th>izvorFin</th>-->
-<!--    <th>izvorFinPre</th>-->
-<!--    <th>plan</th>-->
-<!--    <th>izvrsenje</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let obrazac of obrazacIoList">-->
-<!--    <td>{{ obrazac.redBrojAkt }}</td>-->
-<!--    <td>{{ obrazac.funkKlas }}</td>-->
-<!--    <td>{{ obrazac.konto }}</td>-->
-<!--    <td>{{ obrazac.izvorFin }}</td>-->
-<!--    <td>{{ obrazac.izvorFinPre }}</td>-->
-<!--    <td>{{ obrazac.plan }}</td>-->
-<!--    <td>{{ obrazac.izvrsenje }}</td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>redBrojAkt</th>-->
+<!--        <th>funkKlas</th>-->
+<!--        <th>konto</th>-->
+<!--        <th>izvorFin</th>-->
+<!--        <th>izvorFinPre</th>-->
+<!--        <th>plan</th>-->
+<!--        <th>izvrsenje</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr *ngFor="let obrazac of obrazacIoList">-->
+<!--        <td>{{ obrazac.redBrojAkt }}</td>-->
+<!--        <td>{{ obrazac.funkKlas }}</td>-->
+<!--        <td>{{ obrazac.konto }}</td>-->
+<!--        <td>{{ obrazac.izvorFin }}</td>-->
+<!--        <td>{{ obrazac.izvorFinPre }}</td>-->
+<!--        <td>{{ obrazac.plan }}</td>-->
+<!--        <td>{{ obrazac.izvrsenje }}</td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
 <!--</nz-table>-->
 
 <!--&lt;!&ndash;Obrazac5&ndash;&gt;-->
 <!--<nz-table-->
 <!--  [nzData]="obrazac5List"-->
-<!--  *ngIf="obrazac5List"-->
+<!--  *ngIf="obrazac5List.length > 0"-->
 <!--  #fixedTable-->
 <!--  [nzFrontPagination]="false" [nzShowPagination]="false"-->
 <!--&gt;-->
@@ -133,3 +132,5 @@
 <!--  </tr>-->
 <!--  </tbody>-->
 <!--</nz-table>-->
+
+

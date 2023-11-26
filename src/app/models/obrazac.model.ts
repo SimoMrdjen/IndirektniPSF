@@ -13,8 +13,8 @@ export class Obrazac {
   public obrazacType?: string;
   public storno?: string;
   zakljucniListDtos: ZakList[] = [];
-  obrazacIo: ObrazacIO[] = [];
-  obrazac5: Obrazac5[] = [];
+  obrazacIODTOS: ObrazacIO[] = [];
+  obrazac5DTOS: Obrazac5[] = [];
 
   constructor() {}
 }

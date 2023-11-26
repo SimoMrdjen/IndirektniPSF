@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Obrazac } from '../models/obrazac.model';
+import { Obrazac } from '../../models/obrazac.model';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { ObrazacService } from '../services/obrazac.service';
+import { ObrazacService } from '../../services/obrazac.service';
 import { Router } from '@angular/router';
-import { KvartalService } from '../services/kvartal.service';
-import { ZakList } from '../models/zakList.model';
-import { ObrazacIO } from '../models/obrazac-io.model';
-import { Obrazac5 } from '../models/obrazac5.model';
+import { KvartalService } from '../../services/kvartal.service';
+import { ZakList } from '../../models/zakList.model';
+import { ObrazacIO } from '../../models/obrazac-io.model';
+import { Obrazac5 } from '../../models/obrazac5.model';
 
 @Component({
   selector: 'app-details-review',
@@ -15,7 +15,7 @@ import { Obrazac5 } from '../models/obrazac5.model';
 })
 export class DetailsReviewComponent {
   public obrazacList: Obrazac[] = [];
-  private obrazacResponse = new Obrazac();
+  //private obrazacResponse = new Obrazac();
   zakLists: ZakList[] = [];
   obrazacIoList: ObrazacIO[] = [];
   obrazac5List: Obrazac5[] = [];
@@ -48,16 +48,11 @@ export class DetailsReviewComponent {
 
     this.service.getObrazacDetails(id, kvartal, obrazacType).subscribe({
       next: (response) => {
-        console.log(response);
-        this.obrazacResponse = response;
         this.obrazacList.push(response);
-        console.log('Response ' + response);
-
-        this.zakLists = [...response.zakljucniListDtos];
-        console.log('zakLists ' + this.zakLists);
-
-        this.obrazacIoList = response.obrazacIo;
-        this.obrazac5List = response.obrazac5;
+        // this.service.updateZakLists(response.zakljucniListDtos);
+        this.zakLists = response.zakljucniListDtos;
+        this.obrazacIoList = response.obrazacIODTOS;
+        this.obrazac5List = response.obrazac5DTOS;
       },
       error: (err) => {
         console.error('Error occurred:', err);

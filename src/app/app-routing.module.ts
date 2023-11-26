@@ -11,7 +11,7 @@ import { OveravanjeComponent } from './overavanje/overavanje.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { PregledComponent } from './pregled/pregled.component';
 import { AuthGuard } from './auth.guard';
-import { DetailsReviewComponent } from './details-review/details-review.component';
+import { DetailsReviewComponent } from './details/details-review/details-review.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, canActivate: [AuthGuard] },
