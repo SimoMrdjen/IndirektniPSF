@@ -50,9 +50,9 @@ export class DetailsReviewComponent {
       next: (response) => {
         this.obrazacList.push(response);
         // this.service.updateZakLists(response.zakljucniListDtos);
-        this.zakLists = response.zakljucniListDtos;
-        this.obrazacIoList = response.obrazacIODTOS;
-        this.obrazac5List = response.obrazac5DTOS;
+        this.zakLists = response.zakljucniListDtos || [];
+        this.obrazacIoList = response.obrazacIODTOS || [];
+        this.obrazac5List = response.obrazac5DTOS || [];
       },
       error: (err) => {
         console.error('Error occurred:', err);

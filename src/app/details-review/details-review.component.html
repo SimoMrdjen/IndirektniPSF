@@ -1,4 +1,4 @@
-<p>details-review works!</p>
+
 
 <nz-table
   [nzData]="obrazacList"
@@ -12,7 +12,7 @@
     <th>Vrsta obrasca</th>
     <th>Id</th>
     <th>Datum</th>
-    <th>Godina</th>
+<!--    <th>Godina</th>-->
     <th>Kvartal</th>
     <th>Verzija</th>
     <th>Jbbk</th>
@@ -25,7 +25,7 @@
     <td >{{ obrazac.obrazacType }}</td>
     <td>{{ obrazac.id }}</td>
     <td>{{ obrazac.date }}</td>
-    <td>{{ obrazac.year }}</td>
+<!--    <td>{{ obrazac.year }}</td>-->
     <td>{{ obrazac.kvartal }}</td>
     <td>{{ obrazac.version }}</td>
     <td>{{ obrazac.jbbk }}</td>
@@ -64,73 +64,77 @@
   </tbody>
 </nz-table>
 
-<!--&lt;!&ndash;ObrazacIO&ndash;&gt;-->
-<!--<nz-table-->
-<!--        [nzData]="obrazacIoList"-->
-<!--        *ngIf="obrazacIoList.length > 0"-->
-<!--        [nzFrontPagination]="false" [nzShowPagination]="false"-->
-<!--&gt;-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>redBrojAkt</th>-->
-<!--        <th>funkKlas</th>-->
-<!--        <th>konto</th>-->
-<!--        <th>izvorFin</th>-->
-<!--        <th>izvorFinPre</th>-->
-<!--        <th>plan</th>-->
-<!--        <th>izvrsenje</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr *ngFor="let obrazac of obrazacIoList">-->
-<!--        <td>{{ obrazac.redBrojAkt }}</td>-->
-<!--        <td>{{ obrazac.funkKlas }}</td>-->
-<!--        <td>{{ obrazac.konto }}</td>-->
-<!--        <td>{{ obrazac.izvorFin }}</td>-->
-<!--        <td>{{ obrazac.izvorFinPre }}</td>-->
-<!--        <td>{{ obrazac.plan }}</td>-->
-<!--        <td>{{ obrazac.izvrsenje }}</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</nz-table>-->
+<!--ObrazacIO-->
+<nz-table
+        [nzData]="obrazacIoList"
+        *ngIf="obrazacIoList.length > 0"
+        [nzFrontPagination]="false" [nzShowPagination]="false"
+        [nzTitle]="stavke"
 
-<!--&lt;!&ndash;Obrazac5&ndash;&gt;-->
-<!--<nz-table-->
-<!--  [nzData]="obrazac5List"-->
-<!--  *ngIf="obrazac5List.length > 0"-->
-<!--  #fixedTable-->
-<!--  [nzFrontPagination]="false" [nzShowPagination]="false"-->
-<!--&gt;-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>oznakOp</th>-->
-<!--    <th>konto</th>-->
-<!--    <th>opis</th>-->
-<!--    <th>planPrihoda</th>-->
-<!--    <th>izvrsenje</th>-->
-<!--    <th>republika</th>-->
-<!--    <th>pokrajina</th>-->
-<!--    <th>opstina</th>-->
-<!--    <th>ooso</th>-->
-<!--    <th>donacije</th>-->
-<!--    <th>ostali</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let obrazac of obrazac5List">-->
-<!--    <td>{{ obrazac.oznakOp }}</td>-->
-<!--    <td>{{ obrazac.konto }}</td>-->
-<!--    <td>{{ obrazac.opis }}</td>-->
-<!--    <td>{{ obrazac.planPrihoda }}</td>-->
-<!--    <td>{{ obrazac.izvrsenje }}</td>-->
-<!--    <td>{{ obrazac.republika }}</td>-->
-<!--    <td>{{ obrazac.pokrajina }}</td>-->
-<!--    <td>{{ obrazac.opstina }}</td>-->
-<!--    <td>{{ obrazac.ooso }}</td>-->
-<!--    <td>{{ obrazac.donacije }}</td>-->
-<!--    <td>{{ obrazac.ostali }}</td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--</nz-table>-->
+>
+    <thead>
+    <tr>
+        <th>redBrojAkt</th>
+        <th>funkKlas</th>
+        <th>konto</th>
+        <th>izvorFin</th>
+        <th>izvorFinPre</th>
+        <th>plan</th>
+        <th>izvrsenje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let obrazac of obrazacIoList">
+        <td>{{ obrazac.redBrojAkt }}</td>
+        <td>{{ obrazac.funkKlas }}</td>
+        <td>{{ obrazac.konto }}</td>
+        <td>{{ obrazac.izvorFin }}</td>
+        <td>{{ obrazac.izvorFinPre }}</td>
+        <td>{{ obrazac.plan }}</td>
+        <td>{{ obrazac.izvrsenje }}</td>
+    </tr>
+    </tbody>
+</nz-table>
+
+<!--Obrazac5-->
+<nz-table
+  [nzData]="obrazac5List"
+  *ngIf="obrazac5List.length > 0"
+  #fixedTable
+  [nzFrontPagination]="false" [nzShowPagination]="false"
+  [nzTitle]="stavke"
+
+>
+  <thead>
+  <tr>
+    <th>oznakOp</th>
+    <th>konto</th>
+    <th>opis</th>
+    <th>planPrihoda</th>
+    <th>izvrsenje</th>
+    <th>republika</th>
+    <th>pokrajina</th>
+    <th>opstina</th>
+    <th>ooso</th>
+    <th>donacije</th>
+    <th>ostali</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let obrazac of obrazac5List">
+    <td>{{ obrazac.oznakOp }}</td>
+    <td>{{ obrazac.konto }}</td>
+    <td>{{ obrazac.opis }}</td>
+    <td>{{ obrazac.planPrihoda }}</td>
+    <td>{{ obrazac.izvrsenje }}</td>
+    <td>{{ obrazac.republika }}</td>
+    <td>{{ obrazac.pokrajina }}</td>
+    <td>{{ obrazac.opstina }}</td>
+    <td>{{ obrazac.ooso }}</td>
+    <td>{{ obrazac.donacije }}</td>
+    <td>{{ obrazac.ostali }}</td>
+  </tr>
+  </tbody>
+</nz-table>
 
 

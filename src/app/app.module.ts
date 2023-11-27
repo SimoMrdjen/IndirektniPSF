@@ -47,9 +47,6 @@ import { DetailsReviewComponent } from './details-review/details-review.componen
 import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeSrLatn from '@angular/common/locales/sr-Latn';
-import { ZakListDetailsComponent } from './details/zak-list-details/zak-list-details.component';
-import { Obrazac5DetailsComponent } from './details/obrazac5-details/obrazac5-details.component';
-import { ObrazacIoDetailsComponent } from './details/obrazac-io-details/obrazac-io-details.component';
 
 registerLocaleData(localeSrLatn);
 @NgModule({
@@ -74,9 +71,6 @@ registerLocaleData(localeSrLatn);
     BlankPageComponent,
     PregledComponent,
     DetailsReviewComponent,
-    ZakListDetailsComponent,
-    Obrazac5DetailsComponent,
-    ObrazacIoDetailsComponent,
   ],
   imports: [
     BrowserModule,
