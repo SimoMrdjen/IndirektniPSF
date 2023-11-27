@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Obrazac } from '../../models/obrazac.model';
+import { Obrazac } from '../models/obrazac.model';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { ObrazacService } from '../../services/obrazac.service';
+import { ObrazacService } from '../services/obrazac.service';
 import { Router } from '@angular/router';
-import { KvartalService } from '../../services/kvartal.service';
-import { ZakList } from '../../models/zakList.model';
-import { ObrazacIO } from '../../models/obrazac-io.model';
-import { Obrazac5 } from '../../models/obrazac5.model';
+import { KvartalService } from '../services/kvartal.service';
+import { ZakList } from '../models/zakList.model';
+import { ObrazacIO } from '../models/obrazac-io.model';
+import { Obrazac5 } from '../models/obrazac5.model';
 
 @Component({
   selector: 'app-details-review',

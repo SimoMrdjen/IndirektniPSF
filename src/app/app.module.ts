@@ -43,7 +43,7 @@ import { OdobravanjeComponent } from './odobravanje/odobravanje.component';
 import { OveravanjeComponent } from './overavanje/overavanje.component';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { PregledComponent } from './pregled/pregled.component';
-import { DetailsReviewComponent } from './details/details-review/details-review.component';
+import { DetailsReviewComponent } from './details-review/details-review.component';
 import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeSrLatn from '@angular/common/locales/sr-Latn';
