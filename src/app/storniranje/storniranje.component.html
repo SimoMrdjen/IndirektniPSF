@@ -8,7 +8,7 @@
   <tr>
     <th>Id</th>
     <th>Datum</th>
-    <th>Godina</th>
+    <!--    <th>Godina</th>-->
     <th>Kvartal</th>
     <th>Verzija</th>
     <th>Jbbk</th>
@@ -21,17 +21,27 @@
     <td>{{ obrazac.id }}</td>
     <td>{{ obrazac.date }}</td>
     <td>{{ obrazac.kvartal }}</td>
-    <td>{{ obrazac.year }}</td>
+    <!--    <td>{{ obrazac.year }}</td>-->
     <td>{{ obrazac.version }}</td>
     <td>{{ obrazac.jbbk }}</td>
     <td>{{ obrazac.status }}</td>
 
     <td>
       <nz-divider nzType="vertical"></nz-divider>
-      <button nz-button nzType="primary" (click)="stornoObrazac(obrazac)">
+      <button nz-button nzType="primary" (click)="stornoObrazac(obrazac, opisStorno)"
+              [disabled]="!opisStorno"
+      >
         Storniranje
       </button>
     </td>
   </tr>
   </tbody>
 </nz-table>
+<hr>
+<h6>Opis:</h6>
+<input
+  type="text"
+  [(ngModel)]="opisStorno"
+  placeholder="Razlog storniranja"
+  class="form-control mb-3"
+/>

@@ -13,6 +13,7 @@ import { KvartalService } from '../services/kvartal.service';
 })
 export class StorniranjeComponent implements OnInit {
   public obrazacList: Obrazac[] = [];
+  public opisStorno = '';
 
   constructor(
     private notification: NzNotificationService,
@@ -25,11 +26,11 @@ export class StorniranjeComponent implements OnInit {
     this.getObrazacZaStorno();
   }
 
-  stornoObrazac(zakList: Obrazac) {
+  stornoObrazac(zakList: Obrazac, opis: string) {
     const kvartal = this.kvartalService.getKvartal();
 
     if (zakList.id !== undefined && kvartal !== undefined) {
-      this.service.stornoObrazac(zakList.id, kvartal).subscribe({
+      this.service.stornoObrazac(zakList.id, kvartal, opis).subscribe({
         next: (response) => {
           console.log(response);
           // this.zakList = <any>response;

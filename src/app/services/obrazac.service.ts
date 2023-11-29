@@ -41,6 +41,11 @@ export class ObrazacService {
     params = params.append('typeOfObrazac', typeOfObrazac);
     return params;
   }
+  getParamsWithOpis(kvartal: number, opis: string): HttpParams {
+    let params = new HttpParams().append('kvartal', kvartal);
+    params = params.append('opis', opis);
+    return params;
+  }
   getParam(kvartal: number): HttpParams {
     let params = new HttpParams().append('kvartal', kvartal);
     return params;
@@ -100,10 +105,10 @@ export class ObrazacService {
     );
   }
 
-  stornoObrazac(id: number, kvartal: number): Observable<any> {
+  stornoObrazac(id: number, kvartal: number, opis: string): Observable<any> {
     const options: any = {
       responseType: 'text' as 'json',
-      params: this.getParam(kvartal),
+      params: this.getParamsWithOpis(kvartal, opis),
     };
     return this.http.put(
       this.url + this.typeOfObrazac + '/storno/' + id,
