@@ -7,11 +7,13 @@ import { KvartalService } from '../services/kvartal.service';
 import { ZakList } from '../models/zakList.model';
 import { ObrazacIO } from '../models/obrazac-io.model';
 import { Obrazac5 } from '../models/obrazac5.model';
+import { LOCALE_ID } from '@angular/core';
 
 @Component({
   selector: 'app-details-review',
   templateUrl: './details-review.component.html',
   styleUrls: ['./details-review.component.css'],
+  providers: [{ provide: LOCALE_ID, useValue: 'de' }], // use 'de' or any other locale you prefer
 })
 export class DetailsReviewComponent {
   public obrazacList: Obrazac[] = [];
