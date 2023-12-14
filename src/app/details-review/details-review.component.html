@@ -90,8 +90,8 @@
         <td>{{ obrazac.konto }}</td>
         <td>{{ obrazac.izvorFin }}</td>
         <td>{{ obrazac.izvorFinPre }}</td>
-        <td>{{ obrazac.plan }}</td>
-        <td>{{ obrazac.izvrsenje }}</td>
+        <td>{{ obrazac.plan  | number:'1.2-2'}}</td>
+        <td>{{ obrazac.izvrsenje  | number:'1.2-2'}}</td>
     </tr>
     </tbody>
 </nz-table>
@@ -125,14 +125,14 @@
     <td>{{ obrazac.oznakOp }}</td>
     <td>{{ obrazac.konto }}</td>
     <td>{{ obrazac.opis }}</td>
-    <td>{{ obrazac.planPrihoda }}</td>
-    <td>{{ obrazac.izvrsenje }}</td>
-    <td>{{ obrazac.republika }}</td>
-    <td>{{ obrazac.pokrajina }}</td>
-    <td>{{ obrazac.opstina }}</td>
-    <td>{{ obrazac.ooso }}</td>
-    <td>{{ obrazac.donacije }}</td>
-    <td>{{ obrazac.ostali }}</td>
+    <td>{{ obrazac.planPrihoda  | number:'1.2-2'}}</td>
+    <td>{{ obrazac.izvrsenje  | number:'1.2-2'}}</td>
+    <td>{{ obrazac.republika  | number:'1.2-2'}}</td>
+    <td>{{ obrazac.pokrajina | number:'1.2-2'}}</td>
+    <td>{{ obrazac.opstina  | number:'1.2-2'}}</td>
+    <td>{{ obrazac.ooso  | number:'1.2-2'}}</td>
+    <td>{{ obrazac.donacije  | number:'1.2-2'}}</td>
+    <td>{{ obrazac.ostali  | number:'1.2-2'}}</td>
   </tr>
   </tbody>
 </nz-table>
