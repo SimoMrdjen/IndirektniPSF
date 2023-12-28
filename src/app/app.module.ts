@@ -46,9 +46,11 @@ import { PregledComponent } from './pregled/pregled.component';
 import { DetailsReviewComponent } from './details-review/details-review.component';
 import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
-import localeSrLatn from '@angular/common/locales/sr-Latn';
+// import localeSrLatn from '@angular/common/locales/sr-Latn';
+// registerLocaleData(localeSrLatn);
+import localeDe from '@angular/common/locales/de'; // or any other locale
+registerLocaleData(localeDe);
 
-registerLocaleData(localeSrLatn);
 @NgModule({
   declarations: [
     AppComponent,
