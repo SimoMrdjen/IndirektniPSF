@@ -69,12 +69,16 @@
       <nz-breadcrumb-item *ngIf="kvartal">Izabran je {{kvartal}}. kvartal</nz-breadcrumb-item>
       <nz-breadcrumb-item *ngIf="!kvartal">Niste izabrali kvartal!</nz-breadcrumb-item>
 
+
     </nz-breadcrumb>
     <div class="inner-content">
       <router-outlet></router-outlet>
     </div>
   </nz-content>
   <nz-footer>
+    <h2>U ovo aplikaciji trenutno ucitavate samo Zakljucni list!</h2>
+    <h4>Obrazac IO i Obrazac 5 ucitavate, kao i do sad, u aplikaciji na linku <a href="https://185.166.125.138/Indirektni.dll">Ucitavanja obrazaca</a></h4>
+
     <img src="assets/APV.png" alt="APV Logo" class="footer-image" />
   </nz-footer>
 </nz-layout>
