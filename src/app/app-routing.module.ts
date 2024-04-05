@@ -47,7 +47,7 @@ const routes: Routes = [
     component: OveravanjeComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'blank', component: BlankPageComponent, canActivate: [AuthGuard] },
+  { path: 'blank', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'pregled', component: PregledComponent, canActivate: [AuthGuard] },
   {
     path: 'details',

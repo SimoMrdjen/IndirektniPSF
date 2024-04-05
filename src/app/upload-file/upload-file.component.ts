@@ -15,7 +15,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   selectedFile: File | null = null;
 
   kvartal?: number;
-  //typeOfObrazac: string = 'ZakljucniList';
+  isButtonDisabled = false; 
 
   dummyRequest = (item: any): Subscription => {
     return of(null)
@@ -45,16 +45,22 @@ export class UploadFileComponent implements OnInit, OnDestroy {
       this.selectedFile = file.originFileObj;
       this.notification.create(
         'success',
-        'Odabran je file ',
-        this.selectedFile.name
+        'Uspesno ste odabrali fajl. ',
+        'Idite na dugme "Ucitaj obrazac"'
+       // this.selectedFile.name
       );
     } else {
-      this.notification.create('error', 'Nije odabran file! ', '');
+      this.notification.create('error',
+       'Nije odabran file! ', 
+       '',
+       { nzDuration: 5000 });
     }
   }
 
   sendFile(): void {
     if (this.selectedFile && this.kvartal) {
+      this.isButtonDisabled = true;
+
       this.fileUploadService
         .uploadExcelFile(
           this.selectedFile,
@@ -67,14 +73,18 @@ export class UploadFileComponent implements OnInit, OnDestroy {
               this.notification.create(
                 'success',
                 'Obrazac je uspesno ucitan !',
-                ''
+                '',
+                { nzDuration: 10000 }
               );
+            this.isButtonDisabled = false; 
             } else {
               this.notification.create(
                 'warning',
                 'Obrazac je uspesno ucitan !',
-                response
+                response,
+                { nzDuration: 10000 }
               );
+              this.isButtonDisabled = false; 
             }
           },
           error: (error) => {
@@ -82,13 +92,19 @@ export class UploadFileComponent implements OnInit, OnDestroy {
             this.notification.create(
               'error',
               'Neuspesno ucitavanje!',
-              error.error
+              error.error,
+              { nzDuration: 10000 }
             );
           },
         });
     } else {
-      this.notification.create('error', 'Fajl nije odabran!', '');
-    }
+      this.notification.create('error', 
+      'Niste odabrali kvartal ili fajl!', '', 
+       { nzDuration: 10000 } );
+    }  
+
     this.router.navigate(['/blank']);
   }
+  
+  
 }

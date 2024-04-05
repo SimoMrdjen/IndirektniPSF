@@ -37,14 +37,16 @@ export class StorniranjeComponent implements OnInit {
           this.notification.create(
             'success',
             'Obrazac je uspesno storniran! ',
-            response
+            response,
+            { nzDuration: 10000 }
           );
         },
         error: (err) => {
           this.notification.create(
             'error',
             'Sorniranje nije uspelo! ',
-            err.error
+            err.error,
+            { nzDuration: 10000 }
           );
         },
       });
@@ -65,7 +67,8 @@ export class StorniranjeComponent implements OnInit {
           this.notification.create(
             'error',
             'Ne postoji obrazac za storniranje ',
-            err.error
+            err.error,
+            { nzDuration: 10000 }
           );
           this.router.navigate(['/blank']);
         },

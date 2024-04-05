@@ -38,7 +38,8 @@ export class OveravanjeComponent {
           this.notification.create(
             'error',
             'Ne postoji obrazac za overavanje ',
-            err.error
+            err.error,
+            { nzDuration: 10000 }
           );
           this.router.navigate(['/']);
         },
@@ -60,14 +61,16 @@ export class OveravanjeComponent {
           this.notification.create(
             'success',
             'Obrazac je uspesno overen! ',
-            ''
+            '',
+            { nzDuration: 10000 }
           );
         },
         error: (err) => {
           this.notification.create(
             'error',
             'Overavanje nije uspelo! ',
-            err.error
+            err.error,
+            { nzDuration: 10000 }
           );
         },
       });

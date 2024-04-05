@@ -39,7 +39,8 @@ export class OdobravanjeComponent implements OnInit {
           this.notification.create(
             'error',
             'Ne postoji obrazac za odobravanje ',
-            err.error
+            err.error,
+            { nzDuration: 10000 }
           );
           this.router.navigate(['/blank']);
         },
@@ -61,14 +62,16 @@ export class OdobravanjeComponent implements OnInit {
           this.notification.create(
             'success',
             'Obrazac je uspesno odobren! ',
-            ''
+            '',
+            { nzDuration: 10000 }
           );
         },
         error: (err) => {
           this.notification.create(
             'error',
             'Odobravanje nije uspelo! ',
-            err.error
+            err.error,
+            { nzDuration: 10000 }
           );
         },
       });
