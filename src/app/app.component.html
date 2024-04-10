@@ -1,5 +1,84 @@
-<app-navigation></app-navigation>
+<!--<app-lay-out>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</app-lay-out>-->
 
-<div class="container-fluid">
-  <router-outlet></router-outlet>
-</div>
+<nz-layout>
+  <nz-header>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      <li nz-menu-item>
+        <img src="assets/APV.png" alt="APV Logo" class="header-image" />
+      </li>
+      <li nz-menu-item>
+        <app-dropdown />
+      </li>
+
+      <li nz-menu-item>
+        <app-drop-odobravanje></app-drop-odobravanje>
+      </li>
+
+      <li nz-menu-item>
+        <app-drop-overavanje />
+      </li>
+
+      <li nz-menu-item>
+        <app-drop-storno />
+      </li>
+
+      <li nz-menu-item>
+        <app-download />
+      </li>
+
+      <li nz-menu-item>
+        <a
+          [routerLink]="['/']"
+        >Izaberite kvartal</a
+        >
+      </li>
+
+      <li nz-menu-item>
+        <a
+          [routerLink]="['/pregled']"
+        >Pregled</a
+        >
+      </li>
+
+      <li nz-menu-item>
+        <button nz-button nzGhost (click)="onLogout()" class="logout-button">
+          Odjavi se
+        </button>
+      </li>
+
+      <li nz-menu-item>
+        <button nz-button nzGhost class="logout-button">
+          <a
+            [routerLink]="['/users']"
+            class="nav-link px-2 text-white"
+            *ngIf="role == 0"
+            >Korisnici</a
+          >
+        </button>
+      </li>
+    </ul>
+  </nz-header>
+  <nz-content  >
+    <nz-breadcrumb>
+<!--      <nz-breadcrumb-item>Home</nz-breadcrumb-item>-->
+      <nz-breadcrumb-item>{{indirektni}}</nz-breadcrumb-item>
+      <nz-breadcrumb-item *ngIf="kvartal">Izabran je {{kvartal}}. kvartal</nz-breadcrumb-item>
+      <nz-breadcrumb-item *ngIf="!kvartal" class="red-breadcrumb">Niste izabrali kvartal!</nz-breadcrumb-item>
+
+
+    </nz-breadcrumb>
+    <div class="inner-content">
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+  <nz-footer>
+    <h2>U ovoj aplikaciji trenutno ucitavate samo Zakljucni list!</h2>
+    <h4>Obrazac IO i Obrazac 5 ucitavate, kao i do sad, u aplikaciji na linku <a href="https://185.166.125.138/Indirektni.dll">Ucitavanja obrazaca</a></h4>
+
+    <img src="assets/APV.png" alt="APV Logo" class="footer-image" />
+  </nz-footer>
+</nz-layout>

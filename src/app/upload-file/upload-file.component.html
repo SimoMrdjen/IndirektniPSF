@@ -1,0 +1,15 @@
+<nz-upload
+  nzType="drag"
+  [nzMultiple]="false"
+  [nzCustomRequest]="dummyRequest"
+  (nzChange)="handleChange($event)"
+>
+  <p class="ant-upload-drag-icon">
+    <span nz-icon nzType="inbox"></span>
+  </p>
+  <p class="ant-upload-text">Klikni za izbor ili prevuci željeni fajl na površinu</p>
+</nz-upload>
+<hr />
+<button type="button" (click)="sendFile();" [disabled]="isButtonDisabled" class="btn btn-secondary">
+  Učitaj obrazac
+</button>

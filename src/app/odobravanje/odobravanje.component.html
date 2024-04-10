@@ -1,0 +1,37 @@
+
+<nz-table
+  [nzData]="obrazacList"
+  #fixedTable
+  [nzFrontPagination]="false" [nzShowPagination]="false"
+>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Datum</th>
+<!--      <th>Godina</th>-->
+      <th>Kvartal</th>
+      <th>Verzija</th>
+      <th>Jbbk</th>
+      <th>Status</th>
+      <th>Akcija</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obrazac of obrazacList">
+      <td>{{ obrazac.id }}</td>
+      <td>{{ obrazac.date }}</td>
+      <td>{{ obrazac.kvartal }}</td>
+<!--      <td>{{ obrazac.year }}</td>-->
+      <td>{{ obrazac.version }}</td>
+      <td>{{ obrazac.jbbk }}</td>
+      <td>{{ obrazac.status }}</td>
+
+      <td>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzType="primary" (click)="raiseStatus(obrazac)">
+          Odobravanje
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

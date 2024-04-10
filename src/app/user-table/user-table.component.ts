@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { EditUserService } from '../services/edit-user.service';
 import { HttpClient } from '@angular/common/http';
-import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 
 @Component({
   selector: 'app-user-table',
@@ -11,7 +10,7 @@ import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 })
 export class UserTableComponent implements OnInit {
   public users: User[] = [];
-  titleParent: string = '';
+  title: string = '';
 
   constructor(
     private userService: UserService,
@@ -37,7 +36,7 @@ export class UserTableComponent implements OnInit {
   }
 
   openEditUser(user: User) {
-    this.titleParent = 'Edit';
+    this.title = 'Edit';
     this.editUserService.isAddingUser = false;
     this.editUserService.setUser(user);
     console.log(user);

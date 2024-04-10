@@ -1,0 +1,13 @@
+<a nz-dropdown [nzDropdownMenu]="menu" class="dropdown-title text-white">
+  Preuzmi obrazac
+  <span nz-icon nzType="down"></span>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li nz-menu-item (click)="downloadObrazac('ZakljucniList')">
+      Zakljucni list
+    </li>
+    <li nz-menu-item (click)="downloadObrazac('ObrazacIO')">IO obrazac</li>
+    <li nz-menu-item (click)="downloadObrazac('Obrazac5')">Obrazac 5</li>
+  </ul>
+</nz-dropdown-menu>

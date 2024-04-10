@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NzTableModule } from 'ng-zorro-antd/table';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UcitavanjeComponent } from './ucitavanje/ucitavanje.component';
@@ -12,23 +10,46 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { TokenService } from './services/token.service';
+import { DropdownComponent } from './dropdowns/dropdown/dropdown.component';
+import { DropOdobravanjeComponent } from './dropdowns/drop-odobravanje/drop-odobravanje.component';
+import { DropOveravanjeComponent } from './dropdowns/drop-overavanje/drop-overavanje.component';
+import { DropStornoComponent } from './dropdowns/drop-storno/drop-storno.component';
+import { RouterModule } from '@angular/router';
+// Individual NgZorro modules
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { TokenInterceptorService } from './services/token-interceptor.service';
-import { TokenService } from './services/token.service';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
-
-registerLocaleData(en);
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { DownloadComponent } from './download/download.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { HomePageComponent } from './home-page/home-page.component';
+import { OdobravanjeComponent } from './odobravanje/odobravanje.component';
+import { OveravanjeComponent } from './overavanje/overavanje.component';
+import { BlankPageComponent } from './blank-page/blank-page.component';
+import { PregledComponent } from './pregled/pregled.component';
+import { DetailsReviewComponent } from './details-review/details-review.component';
+import { CommonModule } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+// import localeSrLatn from '@angular/common/locales/sr-Latn';
+// registerLocaleData(localeSrLatn);
+import localeDe from '@angular/common/locales/de'; // or any other locale
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
@@ -40,6 +61,18 @@ registerLocaleData(en);
     UserTableComponent,
     EditUserComponent,
     UserDetailsComponent,
+    DropdownComponent,
+    DropOdobravanjeComponent,
+    DropOveravanjeComponent,
+    DropStornoComponent,
+    DownloadComponent,
+    UploadFileComponent,
+    HomePageComponent,
+    OdobravanjeComponent,
+    OveravanjeComponent,
+    BlankPageComponent,
+    PregledComponent,
+    DetailsReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +81,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    RouterModule,
+    // Individual NgZorro modules
     NzTableModule,
     NzDividerModule,
     NzDrawerModule,
@@ -57,6 +92,11 @@ registerLocaleData(en);
     NzSelectModule,
     NzButtonModule,
     NzNotificationModule,
+    NzLayoutModule,
+    NzBreadCrumbModule,
+    NzDropDownModule,
+    NzUploadModule,
+    CommonModule,
   ],
   providers: [
     {
