@@ -5,16 +5,22 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class IndirektniService {
-  private indirektniSubject = new BehaviorSubject<string | undefined>(
-    undefined
-  );
-  indirektni$ = this.indirektniSubject.asObservable();
+  private indirektniSource = new BehaviorSubject<string | null>(null);
+  indirektni$ = this.indirektniSource.asObservable();
 
-  setKvartal(indirektni: string | undefined) {
-    this.indirektniSubject.next(indirektni);
-  }
+  setKvartal(indirektni: string | null | undefined) {
+    if (indirektni !== undefined) {
+      this.setKvartal(indirektni);
+  } else {
+      this.setKvartal(''); // or null, depending on what should happen when undefined
+  }}
+
 
   getKvartal() {
-    return this.indirektniSubject.value;
+    return this.indirektniSource.value;
   }
+setIndirektni(value: string | null): void {
+    this.indirektniSource.next(value);
+    localStorage.setItem('indirektni', value ?? ''); // Use an empty string or similar if null
+}
 }

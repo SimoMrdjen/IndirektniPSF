@@ -15,7 +15,74 @@ import {
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { EditUserService } from '../services/edit-user.service';
+import { SharedService } from '../services/shared.service';
 
+/*
+@Component({
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.css'],
+})
+export class LoginFormComponent implements OnInit {
+  validateForm: FormGroup;
+  user: User = new User();
+
+
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router,
+    private notification: NzNotificationService,
+    private sharedService: SharedService,
+    private editUserService: EditUserService,
+
+  ) {
+    this.validateForm = this.fb.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      remember: [true],
+    });
+  }
+
+  ngOnInit(): void {}
+
+  submitForm(): void {
+    if (this.validateForm.valid) {
+      const user = {
+        email: this.validateForm.value.email,
+        password: this.validateForm.value.password,
+      };
+
+      this.loginService.login(this.user).subscribe({
+        next: (response) => {
+          if (response.indirektni) {
+            localStorage.setItem('indirektni', response.indirektni);
+            this.sharedService.setIndirektni(response.indirektni);
+          } else {
+            this.sharedService.setIndirektni(null);
+          }
+
+          if (response.access_token) {
+            localStorage.setItem('token', response.access_token);
+          }
+
+          if (response.role) {
+            localStorage.setItem('role', response.role);
+          }
+
+          this.router.navigate(['/']).then(() => {
+            this.notification.create('success', 'Uspesno ste se prijavili! ', '');
+          });
+        },
+        error: (err) => {
+          this.notification.create('error', 'Neispravno korisnicko ime ili lozinka!', '');
+        }
+      });
+    } else {
+      this.validateForm.markAllAsTouched();
+    }
+  }
+}*/
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -35,7 +102,8 @@ export class LoginFormComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private editUserService: EditUserService,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private sharedService: SharedService,
   ) {}
 
   ngOnInit(): void {}
@@ -52,8 +120,9 @@ export class LoginFormComponent implements OnInit {
 
           if (response.indirektni) {
             localStorage.setItem('indirektni', response.indirektni);
+            this.sharedService.setIndirektni(response.indirektni);
           } else {
-            console.error('indirektni not found in response');
+            this.sharedService.setIndirektni(null);
           }
 
           if (response.access_token) {
