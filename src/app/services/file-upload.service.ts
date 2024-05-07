@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { BASE_URL } from '../constants';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 import { KvartalService } from './kvartal.service';
-import { v4 as uuidv4 } from 'uuid'; // Import UUID function
+import { BASE_URL } from '../constants';
 
+/*
 @Injectable({
   providedIn: 'root',
 })
@@ -18,27 +20,36 @@ export class FileUploadService {
   ) {}
 
   uploadExcelFile(file: File, kvartal: number, typeOfObrazac: string): Observable<any> {
+    // Create a new FormData object to hold the file
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    // Generate a UUID for the Idempotency-Key
+    // Generate a unique UUID for the Idempotency-Key
     const idempotencyKey = uuidv4();
 
-    // Prepare headers with the Idempotency-Key
+    // Create headers, including the Idempotency-Key
     const headers = new HttpHeaders({
       'Idempotency-Key': idempotencyKey
     });
 
+    // Options including headers and the expected response type
     const options = {
       headers: headers,
       responseType: 'text' as 'text'
     };
 
-    return this.http.post(`${this.url}${typeOfObrazac}/${kvartal}`, formData, options);
+    // Perform the POST request to upload the file
+    return this.http.post(`${this.url}${typeOfObrazac}/${kvartal}`, formData, options)
+      .pipe(
+        catchError((error) => {
+          // Log and rethrow the error for further handling if necessary
+          console.error('Error uploading file:', error);
+          return throwError(() => new Error('Error uploading file: ' + error.message));
+        })
+      );
   }
-}
+*/
 
-/*
 @Injectable({
   providedIn: 'root',
 })
@@ -68,4 +79,4 @@ export class FileUploadService {
     );
   }
 }
-*/
+
