@@ -74,15 +74,15 @@ export class UploadFileComponent implements OnInit, OnDestroy {
                 'success',
                 'Obrazac je uspesno ucitan !',
                 '',
-                { nzDuration: 10000 }
+                { nzDuration: 30000 }
               );
             this.isButtonDisabled = false; 
             } else {
               this.notification.create(
                 'warning',
-                'Obrazac je uspesno ucitan !',
+                'Obrazac je uspesno ucitan ali imate greške !',
                 response,
-                { nzDuration: 10000 }
+                { nzDuration: 30000 }
               );
               this.isButtonDisabled = false; 
             }
@@ -93,14 +93,14 @@ export class UploadFileComponent implements OnInit, OnDestroy {
               'error',
               'Neuspesno ucitavanje!',
               error.error,
-              { nzDuration: 10000 }
+              { nzDuration: 30000 }
             );
           },
         });
     } else {
       this.notification.create('error', 
       'Niste odabrali kvartal ili fajl!', '', 
-       { nzDuration: 10000 } );
+       { nzDuration: 30000 } );
     }  
 
     this.router.navigate(['/blank']);

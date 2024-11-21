@@ -12,6 +12,7 @@ import { BlankPageComponent } from './blank-page/blank-page.component';
 import { PregledComponent } from './pregled/pregled.component';
 import { AuthGuard } from './auth.guard';
 import { DetailsReviewComponent } from './details-review/details-review.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, canActivate: [AuthGuard] },
@@ -59,5 +60,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }] // Configure HashLocationStrategy
+
 })
 export class AppRoutingModule {}
