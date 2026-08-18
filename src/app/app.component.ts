@@ -3,10 +3,13 @@ import { Router } from '@angular/router';
 import { Role } from './models/role.model';
 import { ObrazacService } from './services/obrazac.service';
 import { KvartalService } from './services/kvartal.service';
-import { Subscription } from 'rxjs';
+import { Subscription, interval } from 'rxjs';
 import { IndirektniService } from './services/indirektni.service';
 import { SharedService } from './services/shared.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { TokenService } from './services/token.service';
+
+const TOKEN_EXPIRY_CHECK_INTERVAL_MS = 30000;
 
 @Component({
   selector: 'app-root',
@@ -21,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   Role = Role;
   kvartal: number | undefined;
   private kvartalSubscription?: Subscription;
+  private tokenExpiryCheckSubscription?: Subscription;
 
 
 
@@ -30,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private indirektniService: IndirektniService,
     private sharedService: SharedService,
     private changeDetectorRef: ChangeDetectorRef,
+    private tokenService: TokenService,
   ) {}
 
   ngOnInit(): void {
@@ -46,12 +51,34 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log('This is kvartal from app onInit : ' + kvartal);
       }
     );
+
+    // Korisnik moze da ostane neaktivan (bez navigacije ili HTTP poziva) na
+    // zasticenoj stranici dok mu istekne token - u tom slucaju ni AuthGuard
+    // (proverava se samo pri navigaciji) ni interceptor (proverava se samo
+    // pri HTTP pozivu) nece ga automatski vratiti na login. Zato periodicno
+    // proveravamo istek tokena i u tom slucaju odjavljujemo korisnika.
+    this.checkTokenExpiry();
+    this.tokenExpiryCheckSubscription = interval(TOKEN_EXPIRY_CHECK_INTERVAL_MS).subscribe(
+      () => this.checkTokenExpiry()
+    );
   }
 
   ngOnDestroy(): void {
     this.indirektniSubscription?.unsubscribe();
     if (this.kvartalSubscription) {
       this.kvartalSubscription.unsubscribe();
+    }
+    this.tokenExpiryCheckSubscription?.unsubscribe();
+  }
+
+  private checkTokenExpiry(): void {
+    const token = localStorage.getItem('token');
+    if (
+      token &&
+      this.tokenService.isTokenExpired(token) &&
+      !this.router.url.startsWith('/login')
+    ) {
+      this.onLogout();
     }
   }
 

@@ -35,6 +35,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { DownloadComponent } from './download/download.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
@@ -95,6 +96,7 @@ registerLocaleData(localeDe);
     NzLayoutModule,
     NzBreadCrumbModule,
     NzDropDownModule,
+    NzIconModule,
     NzUploadModule,
     CommonModule,
   ],

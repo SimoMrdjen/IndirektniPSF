@@ -90,6 +90,7 @@ export class LoginFormComponent implements OnInit {
 })
 export class LoginFormComponent implements OnInit {
   user: User = new User();
+  passwordVisible = false;
 
   validateForm: FormGroup = this.fb.group({
     email: ['', [Validators.required]],
